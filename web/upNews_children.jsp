@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>猿记网</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
     查询信息

@@ -11,8 +11,8 @@
 <html>
 <head>
     <title>猿记网</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
     <script src="/js/jquery-2.0.0.min.js"></script>
-
     <script src="${pageContext.request.contextPath}/js/ueditor/ueditor.config.js"></script>
     <script src="${pageContext.request.contextPath}/js/ueditor/ueditor.all.min.js"></script>
     <script src=""></script>

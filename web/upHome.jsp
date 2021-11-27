@@ -13,6 +13,7 @@
     <title>Title</title>
     <meta charset="utf-8" />
     <title>猿记网</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
     <script type="text/javascript">

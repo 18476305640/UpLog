@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>猿记网</title>
-
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
     <html>
     <head>
         <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
