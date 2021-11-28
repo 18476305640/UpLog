@@ -50,7 +50,7 @@
         }
         .my_context>article>div{
             width: 100%;
-            min-height: 300px;
+            min-height: 30px;
             background: #ffffff;
             box-sizing: border-box;
             padding: 5px ;
