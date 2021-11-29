@@ -284,7 +284,7 @@
                             console.log(data);
                             $(".comment_box").html("");
                             $.each(data,function (index,value){
-                                $(".comment_box").append("<div><p>"+value.up_pname+"：<br/><time>（"+(Math.floor((new Date().getTime()-value.comment_date)/1000/60/24/24)-1)+"天前）</time></p><p>"+value.comment_content+"</p></div>");
+                                $(".comment_box").append("<div><p>"+value.up_pname+"：<br/><time>（"+(Math.floor((new Date().getTime()-value.comment_date)/1000/60/60/24))+"天前）</time></p><p>"+value.comment_content+"</p></div>");
 
                             });
                             console.log("评论更新完成！");

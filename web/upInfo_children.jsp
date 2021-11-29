@@ -81,7 +81,7 @@
                   console.log(data);
                   upid=data.up_id;
                   $(".inUpData_name").text(data.up_pname);
-                  var dayed=Math.floor((new Date().getTime()-data.up_cdate)/1000/60/24/24);
+                  var dayed=Math.floor((new Date().getTime()-data.up_cdate)/1000/60/60/24);
                   $(".inUpData_date").text(dayed);
                   $(".inUpData_ptext").text(data.up_ptext);
 
