@@ -119,10 +119,10 @@
 			     function MyTimeMove(){
 				     autoTimeMove=setInterval(function(){
 					     $(moveRight).click();
-
+						 adapt()
 				     },3000);
 					 /*执行调整开始调整*/
-					 adapt()
+
 			     }
 			     /* 放大*/
 			     var imgBox_up=$(imsBox).children("li");
