@@ -15,7 +15,6 @@
     <script src="/js/jquery-2.0.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/ueditor/ueditor.config.js"></script>
     <script src="${pageContext.request.contextPath}/js/ueditor/ueditor.all.min.js"></script>
-    <script src=""></script>
     <link rel="stylesheet" href="/js/bootstrap/css/bootstrap.css">
 
     <style type="text/css">
