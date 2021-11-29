@@ -120,6 +120,7 @@
         /*}*/
         .ping_title{
             position: relative;
+            min-height: 400px;
         }
         .ping_title>.comment_controller{
             min-width: 300px;
