@@ -87,16 +87,18 @@
 			     /* 屏幕改变事件 */
 			     var parentBox=$(imsBox).children("li");
 
-			     $(window).resize(function(){
-			        //parentBox.css("transition","0s");/*如果想拖动没有宽度改变的过渡，请解开上下两行的注释即可*/
-					showBoxWidth=$(imsBox).parent().width();
-					$(imsBox).find("li").css("width",showBoxWidth);
-					$(imsBox).css({
-						"width":(showBoxWidth*(imgBoxNumber+2)),
-					});
-					AutoMove(0);
-					//parentBox.css("transition","1.3s");
-			     });
+				 /*屏幕改变执行的函数*/
+				 function adapt(){
+						//parentBox.css("transition","0s");/*如果想拖动没有宽度改变的过渡，请解开上下两行的注释即可*/
+						showBoxWidth=$(imsBox).parent().width();
+						$(imsBox).find("li").css("width",showBoxWidth);
+						$(imsBox).css({
+							"width":(showBoxWidth*(imgBoxNumber+2)),
+						});
+						AutoMove(0);
+						//parentBox.css("transition","1.3s");
+				 }
+			     $(window).resize(adapt);
 
 			     /* 移入移出时两边*/
 			     var autoTimeMove=null;
@@ -117,7 +119,10 @@
 			     function MyTimeMove(){
 				     autoTimeMove=setInterval(function(){
 					     $(moveRight).click();
+
 				     },3000);
+					 /*执行调整开始调整*/
+					 adapt()
 			     }
 			     /* 放大*/
 			     var imgBox_up=$(imsBox).children("li");
