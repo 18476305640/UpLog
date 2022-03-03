@@ -12,7 +12,7 @@
 <head>
     <title>猿记网</title>
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/js/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
     <style type="text/css">
         *,h3,p,main{
             margin: 0;
@@ -21,7 +21,7 @@
         }
         body{
 
-            background: url("/img/k6.jpg") center/100% 100% no-repeat;
+            background: url("${pageContext.request.contextPath}/img/k6.jpg") center/100% 100% no-repeat;
 
         }
         main{
@@ -66,14 +66,14 @@
         }
 
     </style>
-    <script src="/js/jquery-2.0.0.min.js"></script>
-    <script src="/js/cookie-utils.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/cookie-utils.js"></script>
     <script type="text/javascript">
 
         $(function(){
             var upid=null;
             $.ajax({
-              url:"/up/getUpData?upid="+${upid},
+              url:"${pageContext.request.contextPath}/up/getUpData?upid="+${upid},
               dataType:"json",
               type:"get",
 
@@ -99,7 +99,7 @@
                  clearInterval(isGetUpid);
                  console.log("获取到了upid="+upid);
                  $("#myData>.toUpdateMyData").click(function(){
-                    window.location.href="/up/toUpUpdatePdata?upid="+upid
+                    window.location.href="${pageContext.request.contextPath}/up/toUpUpdatePdata?upid="+upid
 
                  });
                }
@@ -107,7 +107,7 @@
             },50);
             $("#myData>.toMyHome").click(function(){
                 if(upid!=null){
-                    window.location.href="/up/toUpHome?upid="+upid
+                    window.location.href="${pageContext.request.contextPath}/up/toUpHome?upid="+upid
                 }
 
             });

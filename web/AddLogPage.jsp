@@ -11,12 +11,12 @@
 <html>
 <head>
     <title>猿记网</title>
-    <script src="/js/jquery-2.0.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
 
     <script src="${pageContext.request.contextPath}/js/ueditor/ueditor.config.js"></script>
     <script src="${pageContext.request.contextPath}/js/ueditor/ueditor.all.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/ueditor/lang/zh-cn/zh-cn.js"></script>
-    <link rel="stylesheet" href="/js/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
     <style type="text/css">
         *,h3,p{
             margin: 0;

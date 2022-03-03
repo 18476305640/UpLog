@@ -24,7 +24,7 @@
             margin: 50px auto;
         }
         body{
-            background: url("/img/k7.jpg") center/100% 100% no-repeat;
+            background: url("${pageContext.request.contextPath}/img/k7.jpg") center/100% 100% no-repeat;
 
         }
         .form-group{
@@ -56,7 +56,7 @@
 </head>
 <body>
 <div class="main">
-    <form class="form-horizontal" action="/up/logon" method="post">
+    <form class="form-horizontal" action="${pageContext.request.contextPath}/up/logon" method="post">
 
         <div class="form-group">
             <label for="my_name" class="col-sm-2 control-label">账&nbsp;&nbsp;&nbsp;号:</label>

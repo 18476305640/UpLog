@@ -171,7 +171,7 @@ public class UpController {
     public String updateUpPdata(String upid, String pname, String ptext,MultipartFile up_headImg, Model model, HttpServletRequest request) throws IOException {
         String fileName=null;
         //图片大小小于20M
-        if((! up_headImg.isEmpty()&& (up_headImg.getContentType().equalsIgnoreCase("image/jpeg")) &&(up_headImg.getSize()<20971520))){
+        if(((up_headImg != null )&& (up_headImg.getContentType().contains("image")) &&(up_headImg.getSize()<20971520))){
             System.out.println("进入了获取图片的程序 ..");
             //文件保存的路径
             String path=request.getSession().getServletContext().getRealPath("/")+"img"+File.separator+"upHeadImg";
@@ -185,6 +185,7 @@ public class UpController {
             if(! file1.exists()){
                 file1.mkdirs();
             }
+            System.out.println("上传的文件名是："+fileName);
             File filePath = new File(path, fileName);
             try {
                 up_headImg.transferTo(filePath);
@@ -192,6 +193,9 @@ public class UpController {
                 e.printStackTrace();
             }
 
+        }else {
+            System.out.println("上传图片出现问题！");
+            return "forward:/up/toUpUpdatePdata";
         }
         //基本信息的修改
         System.out.println("修改"+upid+";pname="+pname+";ptext="+ptext);

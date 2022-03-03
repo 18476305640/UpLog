@@ -339,7 +339,7 @@
                     <%--type:getAll,needAdopt,needAgainAdopt--%>
 
                     $.ajax({
-                        url:"/report/adminGetType?logType="+type+"&TargetPage="+TargetPage+"&pageLength="+pageLength+"&likeValue="+likeValue,
+                        url:"${pageContext.request.contextPath}/report/adminGetType?logType="+type+"&TargetPage="+TargetPage+"&pageLength="+pageLength+"&likeValue="+likeValue,
                         dataType:"json",
                         type:"get",
                         success:function (data,states,xhr){
@@ -415,7 +415,7 @@
                     var number=0;
                     <%--type:getAll,needAdopt,needAgainAdopt--%>
                     $.ajax({
-                        url:"/report/adminGetTypeNumber?logType="+type+"&likeValue="+likeValue,
+                        url:"${pageContext.request.contextPath}/report/adminGetTypeNumber?logType="+type+"&likeValue="+likeValue,
                         dataType:"json",
                         type:"get",
                         async:false,
@@ -439,7 +439,7 @@
                 function getAllLogNumber(likeValue,pageNumber){
                     var allNumber=0;
                     $.ajax({
-                        url:"/report/getAllLogNumber?likeValue="+likeValue,
+                        url:"${pageContext.request.contextPath}/report/getAllLogNumber?likeValue="+likeValue,
                         dataType:"json",
                         type:"get",
                         async:false,
@@ -462,7 +462,7 @@
                 }
                 function changeLogState(logid,state){
                     $.ajax({
-                        url:"/report/changeLogState?logid="+logid+"&state="+state,
+                        url:"${pageContext.request.contextPath}/report/changeLogState?logid="+logid+"&state="+state,
                         dataType:"json",
                         type:"get",
                         async:false,
@@ -484,7 +484,7 @@
                 }
 <%--                $(".logsBox_content_all").on("click",".open_all",function(){
                     var logid=$(this).parent("td").parent("tr").children().eq(0).text();
-                    window.open("/log/queryByLogId?logid="+logid);
+                    window.open("${pageContext.request.contextPath}/log/queryByLogId?logid="+logid);
 
                 });
                 $(".logsBox_content_all").on("click",".closeLog_all",function(){
@@ -497,7 +497,7 @@
                     var logid=$(this).parent("td").parent("tr").children().eq(0).text();
                     switch(but_type){
                         case "open":
-                            window.open("/log/queryByLogId?logid="+logid);
+                            window.open("${pageContext.request.contextPath}/log/queryByLogId?logid="+logid);
                             break;
                         case "closeLog":
                             if(confirm("确定将【"+$(this).parent("td").parent("tr").children().eq(2).text()+"】log关进小黑屋吗？")){
@@ -527,7 +527,7 @@
                 <%--举报信息动态显示--%>
                 function getReportData(type,logid){
                     $.ajax({
-                        url:"/report/getReportByLog?type="+type+"&logid="+logid,
+                        url:"${pageContext.request.contextPath}/report/getReportByLog?type="+type+"&logid="+logid,
                         dataType:"json",
                         type:"get",
                         async:false,

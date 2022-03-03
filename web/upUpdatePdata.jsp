@@ -82,7 +82,7 @@
 </head>
 <body>
 <div class="main">
-    <form class="form-horizontal" action="/up/updateUpPdata" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" action="${pageContext.request.contextPath}/up/updateUpPdata" method="post" enctype="multipart/form-data">
         <input type="hidden" name="upid" value="${upid}">
 
         <div class="form-group my_fileStyle_box">

@@ -15,8 +15,8 @@
 
     <title>猿记网</title>
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="css/bobo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bobo.css">
 
     <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-bobo.js"></script>
@@ -431,7 +431,7 @@
 
     </style>
 
-    <script src="/js/cookie-utils.js"></script>
+    <script src="${pageContext.request.contextPath}/js/cookie-utils.js"></script>
 
     <%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>--%>
     <script type="text/javascript">
@@ -440,15 +440,15 @@
             var user=$.getCookie("user");
             var scode=$.getCookie("scode");
             if(user!=null && scode != null){
-                  $(".myNavBox").html("<a href='/up/toUpAdmin' class='inAdmin'>管理</a>");
+                  $(".myNavBox").html("<a href='${pageContext.request.contextPath}/up/toUpAdmin' class='inAdmin'>管理</a>");
                   $("#myHome").after("<div class='navBox deleteCookie'>退出</div>");
 
                   $(".deleteCookie").click(function(){
                      $.ajax({
-                         url:"/up/deleteCookie",
+                         url:"${pageContext.request.contextPath}/up/deleteCookie",
                          type:"get",
                          success:function (data,states,xhr){
-                              window.location.href="/";
+                              window.location.href="${pageContext.request.contextPath}/";
                          },
                          error:function (xhr,status,error){
                              console.log("请求删除出错了..");
@@ -457,7 +457,7 @@
                   });
 
             }else{
-                $(".myNavBox").html("<a href='/up/tologin'>登录</a>");
+                $(".myNavBox").html("<a href='${pageContext.request.contextPath}/up/tologin'>登录</a>");
                 $("#myHome").css("width","50px");
             }
 
@@ -468,7 +468,7 @@
             var onePageNumber=15;
             var maxpageNumber=-1;
             $.ajax({
-                    url:"/log/getMinDateNumber",
+                    url:"${pageContext.request.contextPath}/log/getMinDateNumber",
                     dataType:"json",
                     type:"get",
 
@@ -502,7 +502,7 @@
             //用于初始化或用户点击下一页且有初始化，就会触发
             function getMinDateData(){
                 $.ajax({
-                    url:"/log/MinDateLog?thisPage="+thisPage+"&onePageNumber="+onePageNumber,
+                    url:"${pageContext.request.contextPath}/log/MinDateLog?thisPage="+thisPage+"&onePageNumber="+onePageNumber,
                     dataType:"json",
                     type:"get",
 
@@ -511,7 +511,7 @@
                         console.log(data);
                         $(".type_content").html("");
                         $.each(data,function (index,value){
-                            $(".type_content").append("<ul class='oneLog'><li class='logTitle'><a href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></li><li class='logContent'><div><img src='"+value.up_headImg+"'  /></div><a href='/up/toUpHome?upid="+value.up_id+"'>"+value.up_pname+"</a><div class='one_text'>"+value.log_content+"</div></li></ul>");
+                            $(".type_content").append("<ul class='oneLog'><li class='logTitle'><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></li><li class='logContent'><div><img src='${pageContext.request.contextPath}"+value.up_headImg+"'  /></div><a href='${pageContext.request.contextPath}/up/toUpHome?upid="+value.up_id+"'>"+value.up_pname+"</a><div class='one_text'>"+value.log_content+"</div></li></ul>");
                         });
 
                     },
@@ -537,7 +537,7 @@
             //自动发起ajax请求，获取点赞排行
             var firstNumber=10;
             $.ajax({
-                url:"/log/getUpTopNumberFirst?upTopNumberFirstNumber="+firstNumber,
+                url:"${pageContext.request.contextPath}/log/getUpTopNumberFirst?upTopNumberFirstNumber="+firstNumber,
                 dataType:"json",
                 type:"get",
 
@@ -546,7 +546,8 @@
                     //console.log(data); //会输出用户密码
                     $(".maxs_box_content").html("");
                         $.each(data,function (index,value){
-                        $(".maxs_box_content").append("<div><div><img src='"+value.up_headImg+"'></div><a href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
+                            console.log("up_headImg",value.up_headImg);
+                        $(".maxs_box_content").append("<div><div><img src='"+value.up_headImg+"'></div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
                     });
 
                 },
@@ -555,7 +556,7 @@
                 }
             });
             $("#myHome").click(function(){
-                window.location.href="/up/toLogon";
+                window.location.href="${pageContext.request.contextPath}/up/toLogon";
 
             });
 
@@ -595,7 +596,7 @@
                     $(".left_box,.right_box").css("display","none");
                     $(".likeData_box").css("display","block");
                     $.ajax({
-                        url:"/log/getLikeNumber?likeValue="+likeValue,
+                        url:"${pageContext.request.contextPath}/log/getLikeNumber?likeValue="+likeValue,
                         dataType:"json",
                         type:"get",
                         success:function (data,states,xhr){
@@ -624,7 +625,7 @@
             });
             function toGetLimitDate(likeValue,requestPageNumber,numberToPage){
                 $.ajax({
-                        url:"/log/getLogLikeData?likeValue="+likeValue+"&requestPageNumber="+requestPageNumber+"&numberToPage="+numberToPage,
+                        url:"${pageContext.request.contextPath}/log/getLogLikeData?likeValue="+likeValue+"&requestPageNumber="+requestPageNumber+"&numberToPage="+numberToPage,
                         dataType:"json",
                         type:"get",
 
@@ -634,7 +635,7 @@
                             $(".log_box").html("");
 
                             $.each(data,function (index,value){
-                                $(".log_box").append("<div><a href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a><span>"+value.log_content+"</span></div>");
+                                $(".log_box").append("<div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a><span>"+value.log_content+"</span></div>");
                             });
 
                         },
@@ -752,9 +753,9 @@
                 <!-- 轮播图 -->
                 <div class="bobo_box">
                     <ul class="move_ims_box">
-                        <li><img src="/img/k1.jpg" /></li>
-                        <li><img src="/img/k2.png" /></li>
-                        <li><img src="/img/k3.png" /></li>
+                        <li><img src="${pageContext.request.contextPath}/img/k1.jpg" /></li>
+                        <li><img src="${pageContext.request.contextPath}/img/k2.png" /></li>
+                        <li><img src="${pageContext.request.contextPath}/img/k3.png" /></li>
                     </ul>
                     <ul class="controller_points">
 

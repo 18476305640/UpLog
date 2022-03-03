@@ -92,18 +92,18 @@
             $("tbody").on("click",".oneLog_controll>button:nth-child(1)",function (){
            　　　　var logid=$(this).parent("td").siblings(".logInfo").text();
                 if(logid!=""){
-                    window.location.href="/log/toLogUpdate?logid="+logid
+                    window.location.href="${pageContext.request.contextPath}/log/toLogUpdate?logid="+logid
                 }
             });
             $("tbody").on("click",".oneLog_controll>button:nth-child(2)",function (){
            　　　var logid=$(this).parent("td").siblings(".logInfo").text();
                 if(logid!=""){
-                    window.location.href="/log/toDeleteLog?logid="+logid
+                    window.location.href="${pageContext.request.contextPath}/log/toDeleteLog?logid="+logid
                 }
             });
             $(".my_addBut").click(function(){
                 //去添加log页面，携带up_id
-               window.location.href="/log/toAddLog";
+               window.location.href="${pageContext.request.contextPath}/log/toAddLog";
             });
 
 
@@ -126,7 +126,7 @@
                              console.log("检测到了，值是="+pageNumber);
                             //获取到了页数，开始发ajax请求获取，初始化页面（thisPage=1）数据
                             $.ajax({
-                            url:"/log/myPageing?pageNumber="+onePageNumber+"&nextPage="+thisPage,
+                            url:"${pageContext.request.contextPath}/log/myPageing?pageNumber="+onePageNumber+"&nextPage="+thisPage,
                             dataType:"json",
                             type:"get",
                             success:function (data,states,xhr){
@@ -164,7 +164,7 @@
             //初始化调用
             PageingFun();
             $.ajax({
-                    url:"/log/getPageNumber?onePageNumber="+onePageNumber,
+                    url:"${pageContext.request.contextPath}/log/getPageNumber?onePageNumber="+onePageNumber,
                     dataType:"json",
                     type:"get",
 

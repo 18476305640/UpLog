@@ -23,14 +23,14 @@
                 //自动发起ajax，获取按点赞数排名的数据与最新博客的数据
                 $(function(){
                     $.ajax({
-                            url:"/log/getUpLog?upid="+upid,
+                            url:"${pageContext.request.contextPath}/log/getUpLog?upid="+upid,
                             dataType:"json",
                             type:"get",
                             success:function (data,states,xhr){
                                 console.log("前端获取到了博主的全部文章...");
                                 console.log(data);
                                 $.each(data,function (index,value){
-                                    $(".logsBox").append("<div><a href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a><span>"+value.log_content+"<a href='/log/queryByLogId?logid="+value.log_id+"'>查看全文</a></span></div>");
+                                    $(".logsBox").append("<div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a><span>"+value.log_content+"<a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>查看全文</a></span></div>");
                                 });
 
 

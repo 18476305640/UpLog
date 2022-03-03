@@ -224,7 +224,7 @@
                     $(".commentToLog_box").css("display","block");
                 }else{
                     if(confirm("你未登录，是否去登录?")){
-                        window.location.href="/up/tologin"
+                        window.location.href="${pageContext.request.contextPath}/up/tologin"
                     }
                 }
 
@@ -240,7 +240,7 @@
             $(".toUpHome").click(function(){
                 var upid=$("#upid").val();
                 if(upid!=null){
-                    window.location.href="/up/toUpHome?upid="+upid;
+                    window.location.href="${pageContext.request.contextPath}/up/toUpHome?upid="+upid;
                 }
 
 
@@ -253,7 +253,7 @@
 
                 console.log("携带："+commentContent+";评论到："+commentLogId);
                 $.ajax({
-                       url:"/comment/addCommentByLog?commentLogId="+commentLogId+"&commentContent="+commentContent,
+                       url:"${pageContext.request.contextPath}/comment/addCommentByLog?commentLogId="+commentLogId+"&commentContent="+commentContent,
                        type:"get",
                        dataType:"json",
                        success:function (data,states,xhr){
@@ -276,7 +276,7 @@
             getCommentByLogId();
             function getCommentByLogId(){
                 $.ajax({
-                       url:"/comment/queryByLogId?commentLogId="+commentLogId,
+                       url:"${pageContext.request.contextPath}/comment/queryByLogId?commentLogId="+commentLogId,
                        type:"get",
                        dataType:"json",
                        success:function (data,states,xhr){
@@ -310,7 +310,7 @@
             })
             function PointLog(upid,log_id,type){
                 $.ajax({
-                       url:"/pointLog/updatePointLog?upid="+upid+"&log_id="+logid+"&type="+type,
+                       url:"${pageContext.request.contextPath}/pointLog/updatePointLog?upid="+upid+"&log_id="+logid+"&type="+type,
                        type:"get",
                        dataType:"json",
                        success:function (data,states,xhr){
@@ -337,7 +337,7 @@
                         if (confirm("确认举报该Log吗？")) {
                             <%--开始处理举报信息--%>
                             $.ajax({
-                                   url:"/report/toAddReport?logid="+logid+"&reportContent="+reportContent,
+                                   url:"${pageContext.request.contextPath}/report/toAddReport?logid="+logid+"&reportContent="+reportContent,
                                    type:"get",
                                    dataType:"json",
                                    success:function (data,states,xhr){
@@ -353,7 +353,7 @@
                                                 break;
                                             case "-1":
                                                 <%--用户登记信息失效！--%>
-                                                window.location.href="/up/tologin";
+                                                window.location.href="${pageContext.request.contextPath}/up/tologin";
                                                 break;
                                         }
 
@@ -368,7 +368,7 @@
 
                     }else{
                         <%--未登录不能提交举报--%>
-                        window.location.href="/up/tologin";
+                        window.location.href="${pageContext.request.contextPath}/up/tologin";
                     }
 
 

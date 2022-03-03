@@ -23,7 +23,7 @@
             margin: 50px auto;
         }
         body{
-            background: url("/img/k7.jpg") center/100% 100% no-repeat;
+            background: url("${pageContext.request.contextPath}/img/k7.jpg") center/100% 100% no-repeat;
 
         }
 
@@ -31,7 +31,7 @@
 </head>
 <body>
     <div class="main">
-        <form class="form-horizontal" action="/up/login" method="post">
+        <form class="form-horizontal" action="${pageContext.request.contextPath}/up/login" method="post">
 
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">账号</label>

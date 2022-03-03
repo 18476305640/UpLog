@@ -21,6 +21,7 @@
      */
 
 
+
     window.UEDITOR_HOME_URL = "/js/ueditor/"
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();
 

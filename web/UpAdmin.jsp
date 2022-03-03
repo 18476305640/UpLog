@@ -84,8 +84,8 @@
 
         }
     </style>
-    <script src="/js/jquery-2.0.0.min.js"></script>
-    <script src="/js/cookie-utils.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/cookie-utils.js"></script>
     <script type="text/javascript">
         $(function(){
 
@@ -96,7 +96,7 @@
             if(user!=null){
                   console.log("改送ajax。。。");
                   $.ajax({
-                    url:"/up/myAdmin?user="+user+"&scode="+code,
+                    url:"${pageContext.request.contextPath}/up/myAdmin?user="+user+"&scode="+code,
                     dataType:"json",
                     type:"get",
 
@@ -109,7 +109,7 @@
 
                     },
                     error:function (xhr,status,error){
-                        window.location.href="/";
+                        window.location.href="${pageContext.request.contextPath}/";
                     }
                   });
             }
@@ -118,7 +118,7 @@
                if(upid!=null){
                  clearInterval(isGetUpid);
                  console.log("获取到了upid="+upid);
-                 $(".my_vive").attr("src","/up/toUpInfo_children?upid="+upid);
+                 $(".my_vive").attr("src","${pageContext.request.contextPath}/up/toUpInfo_children?upid="+upid);
                }
 
             },50);
@@ -126,16 +126,16 @@
                 var type=$(this).attr("mytype");
                 switch(type){
                     case "upInfo":
-                        toUrl("/up/toUpInfo_children?upid="+upid);
+                        toUrl("${pageContext.request.contextPath}/up/toUpInfo_children?upid="+upid);
                         break;
                     case "logUp":
-                        toUrl("/log/toUpLog_children?upid="+upid);
+                        toUrl("${pageContext.request.contextPath}/log/toUpLog_children?upid="+upid);
                         break;
                     case "upNews":
-                        toUrl("/upNews_children.jsp");
+                        toUrl("${pageContext.request.contextPath}/upNews_children.jsp");
                         break;
                     case "upIsAdmin":
-                        toUrl("/up/toMyAdmin?upid="+upid);
+                        toUrl("${pageContext.request.contextPath}/up/toMyAdmin?upid="+upid);
 
                 }
                 function toUrl(url){
@@ -145,7 +145,7 @@
             });
             //回到首页
             $("#my_title>span:nth-child(2)").click(function(){
-                window.location.href="/";
+                window.location.href="${pageContext.request.contextPath}/";
             });
         });
     </script>
