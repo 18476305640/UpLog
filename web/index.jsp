@@ -542,8 +542,8 @@
                 type:"get",
 
                 success:function (data,states,xhr){
-                    console.log("前端获取到了UptopData...");
-                    console.log(data);
+                    //console.log("前端获取到了UptopData...");
+                    //console.log(data); //会输出用户密码
                     $(".maxs_box_content").html("");
                         $.each(data,function (index,value){
                         $(".maxs_box_content").append("<div><div><img src='"+value.up_headImg+"'></div><a href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
