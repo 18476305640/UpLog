@@ -12,3 +12,5 @@
 4、启动tomcat服务器，将打包的war放在tomcat服务器下的webapps目录下即可 
 
 5、根据http://ip:tomcat端口 访问即可！
+
+详细教程：https://www.cnblogs.com/zjazn/p/15619456.html
