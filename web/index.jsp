@@ -499,6 +499,19 @@
                 }
 
             },50);
+            //引入防抖函数
+            function debounce(func,delay) {
+                let timer = null;
+                return function (...args) {
+                    if(timer) clearTimeout(timer)
+                    timer = setTimeout(() => {
+                        func.apply(this,args)
+                    },delay)
+                }
+            }
+
+            //使用防抖的第一步
+            const refresh =debounce(getMinDateData,80)
             //用于初始化或用户点击下一页且有初始化，就会触发
             function getMinDateData(){
                 $.ajax({
@@ -517,6 +530,8 @@
                     },
                     error:function (xhr,status,error){
                         console.log("出错了..");
+                        //使用防抖调用
+                        refresh()
                     }
                 });
 
@@ -533,6 +548,7 @@
 
 
             });
+
 
             //自动发起ajax请求，获取点赞排行
             var firstNumber=10;
