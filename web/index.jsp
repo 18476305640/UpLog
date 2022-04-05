@@ -510,8 +510,6 @@
                 }
             }
 
-            //使用防抖的第一步
-            const refresh =debounce(getMinDateData,80)
             //用于初始化或用户点击下一页且有初始化，就会触发
             function getMinDateData(){
                 $.ajax({
@@ -531,7 +529,9 @@
                     error:function (xhr,status,error){
                         console.log("出错了..");
                         //使用防抖调用
-                        refresh()
+                        setTimeout(function() {
+                            getMinDateData()
+                        },200)
                     }
                 });
 
@@ -551,26 +551,31 @@
 
 
             //自动发起ajax请求，获取点赞排行
-            var firstNumber=10;
-            $.ajax({
-                url:"${pageContext.request.contextPath}/log/getUpTopNumberFirst?upTopNumberFirstNumber="+firstNumber,
-                dataType:"json",
-                type:"get",
+            (function () {
+                var firstNumber=10;
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/log/getUpTopNumberFirst?upTopNumberFirstNumber="+firstNumber,
+                    dataType:"json",
+                    type:"get",
 
-                success:function (data,states,xhr){
-                    //console.log("前端获取到了UptopData...");
-                    //console.log(data); //会输出用户密码
-                    $(".maxs_box_content").html("");
+                    success:function (data,states,xhr){
+                        //console.log("前端获取到了UptopData...");
+                        //console.log(data); //会输出用户密码
+                        $(".maxs_box_content").html("");
                         $.each(data,function (index,value){
                             console.log("up_headImg",value.up_headImg);
-                        $(".maxs_box_content").append("<div><div><img src='"+value.up_headImg+"'></div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
-                    });
+                            $(".maxs_box_content").append("<div><div><img src='"+value.up_headImg+"'></div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
+                        });
 
-                },
-                error:function (xhr,status,error){
-                    console.log("出错了..");
-                }
-            });
+                    },
+                    error:function (xhr,status,error){
+                        setTimeout(function() {
+                            this()
+                        },200)
+                        console.log("出错了..");
+                    }
+                });
+            })()
             $("#myHome").click(function(){
                 window.location.href="${pageContext.request.contextPath}/up/toLogon";
 
