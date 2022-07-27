@@ -213,6 +213,13 @@
             font-size: 12px;
             text-indent: 8px;
         }
+        #article_content {
+            padding: 30px;
+        }
+        #article_content img {
+            display: block;
+            width: 100%;
+        }
     </style>
 
     <script type="text/javascript">
@@ -414,7 +421,7 @@
         <%--用于评论的时候--%>
         <input type="hidden" class="logidInput" value="${logContent.log_id}">
         <h3>${logContent.log_title}</h3>
-        <div>
+        <div id="article_content">
             <p>${logContent.log_content}</p>
         </div>
     </article>
