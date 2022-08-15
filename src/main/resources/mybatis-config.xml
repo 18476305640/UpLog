@@ -9,7 +9,6 @@
         <package name="com.zjazn.data"/>
     </typeAliases>
     <mappers>
-
         <mapper resource="com/zjazn/dao/CommentMapper.xml"/>
         <mapper resource="com/zjazn/dao/LogMapper.xml"/>
         <mapper resource="com/zjazn/dao/UpMapper.xml"/>
