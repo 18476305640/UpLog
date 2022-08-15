@@ -247,14 +247,15 @@
             width: 100%;
             min-height: 500px;
             box-sizing: border-box;
-            padding: 10px 0px 10px 10px;
-
-
+            padding: 0px 10px;
         }
         .maxs_box_content>div{
+            display: flex;
+            align-items: center;
             width: 100%;
             height: 41px;
             border-bottom: 1px solid #ededed;
+
 
         }
         .maxs_box_content>div>div{
@@ -269,8 +270,8 @@
             display: block;
             width: 85%;
             height: 24px;
+            line-height: 24px;
             float: left;
-
 
             overflow: hidden;
             text-overflow:ellipsis;
@@ -564,7 +565,7 @@
                         $(".maxs_box_content").html("");
                         $.each(data,function (index,value){
                             console.log("up_headImg",value.up_headImg);
-                            $(".maxs_box_content").append("<div><div><img src='"+value.up_headImg+"'></div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
+                            $(".maxs_box_content").append("<div><div><img src='${pageContext.request.contextPath}"+value.up_headImg+"'></div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
                         });
 
                     },
@@ -810,7 +811,6 @@
                     <div>榜单</div>
                 </div>
                 <div class="maxs_box_content">
-
 
                 </div>
             </div>
