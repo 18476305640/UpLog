@@ -8,12 +8,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false"%>
+
+<%--注意：只有动态的内容才通过js操作，比如文章的内容，直接就得到了，而不是通过js操作获取放到文档中的！！！！ --%>
 <html>
 <head>
-    <title>猿记网</title>
+    <title>${logContent.log_title}</title>
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
-    <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/cookie-utils.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
     <style type="text/css">
         *,h3,p{
@@ -222,20 +222,18 @@
         }
     </style>
 
-    <script type="text/javascript">
+    <script type="module">
+        import '${pageContext.request.contextPath}/js/uplog-common.js'
         $(function(){
             $(".comment_controller>.commentToLog").click(function(){
-                var user=$.getCookie("user");
-                var scode=$.getCookie("scode");
-                if(user!=null && scode != null){
+
+                if(data.methods.isAuth()){
                     $(".commentToLog_box").css("display","block");
                 }else{
                     if(confirm("你未登录，是否去登录?")){
                         window.location.href="${pageContext.request.contextPath}/up/tologin"
                     }
                 }
-
-
             });
             $(".commentToLog_box>div>button:nth-child(2)").click(function(){
                 $(".commentToLog_box").css("display","none");
@@ -287,18 +285,12 @@
                        type:"get",
                        dataType:"json",
                        success:function (data,states,xhr){
-                            console.log("前端获取到了...");
-                            console.log(data);
                             $(".comment_box").html("");
                             $.each(data,function (index,value){
                                 $(".comment_box").append("<div><p>"+value.up_pname+"：<br/><time>（"+(Math.floor((new Date().getTime()-value.comment_date)/1000/60/60/24))+"天前）</time></p><p>"+value.comment_content+"</p></div>");
 
                             });
                             console.log("评论更新完成！");
-
-
-
-
                        },
                        error:function (xhr,status,error){
                            console.log("获取评论出错了..");
