@@ -170,11 +170,13 @@ public class UpController {
     @RequestMapping("/updateUpPdata")
     public String updateUpPdata(String upid, String pname, String ptext,MultipartFile up_headImg, Model model, HttpServletRequest request) throws IOException {
         String fileName=null;
+        //文件保存的相对路径
+        String _path = "fileUpload"+File.separator+"upHeadImg";
         //图片大小小于20M
         if(((up_headImg != null )&& (up_headImg.getContentType().contains("image")) &&(up_headImg.getSize()<20971520))){
             System.out.println("进入了获取图片的程序 ..");
             //文件保存的路径
-            String path=request.getSession().getServletContext().getRealPath("/")+"img"+File.separator+"upHeadImg";
+            String path=request.getSession().getServletContext().getRealPath("/")+_path;
             String targetFileName=up_headImg.getOriginalFilename();
             int i = targetFileName.lastIndexOf(".");
             String suffix = targetFileName.substring(i,targetFileName.length());
@@ -208,7 +210,8 @@ public class UpController {
             up.setUp_pname(pname);
             up.setUp_ptext(ptext);
             if(fileName!=null){
-                up.setUp_headImg("/img/upHeadImg/"+fileName);
+                //图片上传后 路径保存到数据库
+                up.setUp_headImg(_path+File.separator+fileName);
             }
             int i = upService.updateUpPById(up);
             if(i>0){
