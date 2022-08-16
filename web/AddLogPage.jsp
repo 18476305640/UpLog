@@ -29,11 +29,7 @@
         #text_box{
             width: 100%;
             height: 60%;
-
-
-
         }
-
         .main{
             width: 100%;
             height: 100%;
@@ -41,10 +37,10 @@
             position: relative;
         }
         .mybut{
-            position: absolute;
-            bottom: 30px;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
             z-index: 1000;
-
         }
     </style>
     <script type="text/javascript">
