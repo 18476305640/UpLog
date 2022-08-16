@@ -15,6 +15,7 @@
     <title>${logContent.log_title}</title>
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/log.css">
     <style type="text/css">
         *,h3,p{
             margin: 0;
@@ -42,6 +43,7 @@
             line-height: 40px;
             text-indent: 5px;
             background-color: #f8f8f8;
+            padding-left: 10px;
 
         }
 
@@ -213,13 +215,7 @@
             font-size: 12px;
             text-indent: 8px;
         }
-        #article_content {
-            padding: 30px;
-        }
-        #article_content img {
-            display: block;
-            width: 100%;
-        }
+
     </style>
 
     <script type="module">
