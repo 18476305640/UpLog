@@ -97,8 +97,6 @@ public class LogController {
         int i = logService.updateLog(newlog);
         if(i>0){
             System.out.println("log修改成功");
-
-
             return "redirect:/log/toUpLog_children";
         }
 
