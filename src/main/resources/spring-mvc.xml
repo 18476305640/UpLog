@@ -51,5 +51,18 @@
     </bean>
     <!--配置上传组件 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 配置拦截器作用的路径 -->
+            <mvc:mapping path="/**" />
+            <!-- 配置不需要拦截作用的路径 -->
+            <mvc:exclude-mapping path="/" />
+            <mvc:exclude-mapping path="/log/**" />
+            <mvc:exclude-mapping path="/up/toUpHome/**" />
+            <!-- 定义<mvc:interceptor>元素中，表示匹配指定路径的请求才进行拦截 -->
+            <bean class="com.zjazn.interceptor.AuthIntercepter" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
 

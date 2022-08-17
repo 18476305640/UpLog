@@ -14,12 +14,12 @@
 
 
     <title>猿记网</title>
-    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico"
-          mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bobo.css">
 
-    <script src="${pageContext.request.contextPath}/js/jquery-2.0.0.min.js"></script>
+
     <script src="${pageContext.request.contextPath}/js/jquery-bobo.js"></script>
 
     <style type="text/css">
