@@ -849,7 +849,7 @@
                             </li>
                             <li class='logContent'>
                                 <div><img src='${pageContext.request.contextPath}${item.up_headImg}'/></div>
-                                <a href='${pageContext.request.contextPath}/up/toUpHome?upid=${value.up_id}'>${item.up_pname}</a>
+                                <a href='${pageContext.request.contextPath}/up/toUpHome?upid=${item.up_id}'>${item.up_pname}</a>
                                 <div class='one_text'>${item.log_content}</div>
                             </li>
                         </ul>

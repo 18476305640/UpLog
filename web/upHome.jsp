@@ -178,6 +178,7 @@
 <body>
     <div class="upHome_box">
         <div class="upHome_headBox">
+            <%--${pageContext.request.contextPath}${item.up_headImg}--%>
             <img src="${pageContext.request.contextPath}${upData.up_headImg}" />
             <input type="hidden" id="inUpid" value="${upData.up_id}">
             <h3>${upData.up_pname}</h3>

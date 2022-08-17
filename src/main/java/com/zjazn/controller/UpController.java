@@ -211,7 +211,7 @@ public class UpController {
             up.setUp_ptext(ptext);
             if(fileName!=null){
                 //图片上传后 路径保存到数据库
-                up.setUp_headImg(_path+File.separator+fileName);
+                up.setUp_headImg( File.separator+_path+File.separator+fileName);
             }
             int i = upService.updateUpPById(up);
             if(i>0){
