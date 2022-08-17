@@ -110,6 +110,7 @@
 			     }).mouseleave(function(){
 				     $(moveLeft).fadeOut(speed+400);
 				     $(moveRight).fadeOut(speed+400);
+					 clearInterval(autoTimeMove);
 				     MyTimeMove();
 
 			     });
