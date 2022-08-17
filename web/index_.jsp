@@ -7,14 +7,15 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="false"%>
+         pageEncoding="UTF-8" isELIgnored="false" %>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
 
     <title>猿记网</title>
-    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico"
+          mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bobo.css">
 
@@ -23,33 +24,39 @@
 
     <style type="text/css">
 
-        *,h3,p{
+        *, h3, p {
             margin: 0;
             padding: 0;
         }
-        @media screen and (max-width:899px) {
-            .left_box{
+
+        @media screen and (max-width: 899px) {
+            .left_box {
                 width: 100% !important;
 
             }
-            .right_box{
+
+            .right_box {
                 display: none !important;
 
             }
-            .imgs_box{
+
+            .imgs_box {
                 height: 200px !important;
 
             }
 
         }
-        @media screen and (min-width:900px) {
+
+        @media screen and (min-width: 900px) {
 
 
         }
-        body{
+
+        body {
             background-color: #f5f5f5;
         }
-        .topbox{
+
+        .topbox {
             width: 100%;
             height: 50px;
             border-bottom: 1px solid #e7e7e7;
@@ -57,29 +64,33 @@
             background: #0d84c1;
             overflow: hidden;
         }
-        .navBox{
 
-            height:100%;
+        .navBox {
+
+            height: 100%;
             width: 50px;
             float: right;
             color: #FFFFFF !important;
             cursor: pointer;
 
         }
-        .myNavBox>a{
+
+        .myNavBox > a {
             text-decoration: none;
 
             color: #FFFFFF !important;
         }
-        .so_box{
+
+        .so_box {
             margin: 0;
         }
-        .my_title{
+
+        .my_title {
             float: left;
 
             margin-left: 20px;
             font-size: 25px;
-            letter-spacing:6px;
+            letter-spacing: 6px;
             font-weight: 600;
             height: 100%;
             color: #ffffff;
@@ -87,14 +98,16 @@
 
 
         }
-        .my_context{
+
+        .my_context {
             width: 100%;
             min-height: 1000px;
             padding-top: 15px;
             background-color: #f5f5f5;
 
         }
-        .my_context>.full_autoBox{
+
+        .my_context > .full_autoBox {
             width: 85%;
             min-height: 1000px;
 
@@ -102,35 +115,39 @@
             margin: 50px auto;
 
         }
-        .full_autoBox>.left_box{
+
+        .full_autoBox > .left_box {
             width: 70%;
             height: 100%;
 
             float: left;
 
         }
-        .left_box>.imgs_box{
+
+        .left_box > .imgs_box {
             width: 100%;
             height: 350px;
             position: relative;
             background: #ffffff;
 
         }
-        .imgs_box>img{
+
+        .imgs_box > img {
             width: 100%;
             height: 100%;
 
         }
-        .left_box>.type_box{
+
+        .left_box > .type_box {
             width: 100%;
             min-height: 1000px;
-            margin-top:15px ;
+            margin-top: 15px;
             background: #ffffff;
             position: relative;
 
         }
 
-        .left_box>.type_box>.type_box_title{
+        .left_box > .type_box > .type_box_title {
             width: 100%;
             height: 40px;
             background: #ffffff;
@@ -138,7 +155,8 @@
 
 
         }
-        .type_box>.type_box_title>div{
+
+        .type_box > .type_box_title > div {
             height: 100%;
             display: inline-block;
             font-size: 18px;
@@ -148,36 +166,41 @@
             cursor: pointer;
 
         }
-        .type_box>.type_box_title>div:nth-child(1){
+
+        .type_box > .type_box_title > div:nth-child(1) {
             border-bottom: 2px solid #47bb4c;
             color: #47bb4c;
         }
-        .type_content>.oneLog{
-            height:84px;
-            padding:18px 24px 13px;
+
+        .type_content > .oneLog {
+            height: 84px;
+            padding: 18px 24px 13px;
             margin-bottom: 1px;
             border-bottom: 1px solid #ededed;
 
             list-style-type: none;
         }
-        .type_content>.oneLog>.logTitle>a{
+
+        .type_content > .oneLog > .logTitle > a {
             font-size: 18px;
             color: #3d3d3d;
         }
-        .oneLog>.logContent{
+
+        .oneLog > .logContent {
             width: 100%;
-            height:25px;
+            height: 25px;
 
             /* 弹性盒子 */
             display: flex;
-            justify-content:flex-start;
-            align-items:center;
-            flex-wrap:nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: nowrap;
 
 
         }
-        .oneLog>.logContent>div:nth-child(1){
-            height:24px ;
+
+        .oneLog > .logContent > div:nth-child(1) {
+            height: 24px;
             width: 24px;
             float: left;
 
@@ -185,37 +208,45 @@
             border-radius: 50%;
             overflow: hidden;
         }
-        .oneLog>.logContent img{
+
+        .oneLog > .logContent img {
             width: 24px !important;
             height: 24px !important;
 
         }
-        .oneLog>.logContent>div:nth-child(1)>img{width: 20px;height: 20px;}
-        .oneLog>.logContent>a{
+
+        .oneLog > .logContent > div:nth-child(1) > img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .oneLog > .logContent > a {
             display: inline-block;
-            height:24px ;
+            height: 24px;
             max-width: 20%;
             float: left;
             margin-right: 16px;
 
             white-space: nowrap;
             overflow: hidden;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
 
         }
-        .oneLog>.logContent .one_text{
-            height:24px ;
-            width: 75% ;
+
+        .oneLog > .logContent .one_text {
+            height: 24px;
+            width: 75%;
             float: left;
             margin-right: 3px;
 
 
             white-space: nowrap;
             overflow: hidden;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
 
         }
-        .full_autoBox>.right_box{
+
+        .full_autoBox > .right_box {
             width: 29%;
             height: 1511px;
             background: #ffffff;
@@ -223,33 +254,37 @@
             background: #ffffff;
 
             overflow: hidden;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
             white-space: nowrap;
 
         }
-        .right_box>.maxs{
-            min-width:150px;
+
+        .right_box > .maxs {
+            min-width: 150px;
             min-height: 700px;
 
         }
-        .right_box>.maxs>.maxs_box_title{
+
+        .right_box > .maxs > .maxs_box_title {
             width: 100%;
             height: 40px;
             border-bottom: 1px solid #ededed;
             font-size: 18px;
             line-height: 40px;
-            color:#333333 ;
+            color: #333333;
             box-sizing: border-box;
             padding-left: 20px;
 
         }
-        .right_box>.maxs>.maxs_box_content{
+
+        .right_box > .maxs > .maxs_box_content {
             width: 100%;
             min-height: 500px;
             box-sizing: border-box;
             padding: 0px 10px;
         }
-        .maxs_box_content>div{
+
+        .maxs_box_content > div {
             display: flex;
             align-items: center;
             width: 100%;
@@ -258,15 +293,21 @@
 
 
         }
-        .maxs_box_content>div>div{
+
+        .maxs_box_content > div > div {
             width: 24px;
             height: 24px;
             float: left;
 
             margin-right: 2%;
         }
-        .maxs_box_content>div>div>img{width: 100%;height: 100%;}
-        .maxs_box_content>div>a{
+
+        .maxs_box_content > div > div > img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .maxs_box_content > div > a {
             display: block;
             width: 85%;
             height: 24px;
@@ -274,15 +315,17 @@
             float: left;
 
             overflow: hidden;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
             white-space: nowrap;
-            color:#333333 ;
+            color: #333333;
         }
-        .maxs_box_content>div:nth-child(1)>a,.maxs_box_content>div:nth-child(2)>a,.maxs_box_content>div:nth-child(3)>a{
+
+        .maxs_box_content > div:nth-child(1) > a, .maxs_box_content > div:nth-child(2) > a, .maxs_box_content > div:nth-child(3) > a {
             font-weight: 600;
-            color:red !important;
+            color: red !important;
         }
-        .type_box>.toNext{
+
+        .type_box > .toNext {
             width: 80px;
             height: 26px;
             background: #0d84c1;
@@ -298,20 +341,22 @@
 
 
         }
-        #myHome{
+
+        #myHome {
             width: 0px;
         }
 
         /*搜索结果样式*/
-        .full_autoBox>.likeData_box{
+        .full_autoBox > .likeData_box {
             width: 100%;
-            min-height:500px ;
+            min-height: 500px;
             background: #ffffff;
             /*搜索显示默认隐藏*/
             display: none;
             position: relative;
         }
-        .likeData_box>h3{
+
+        .likeData_box > h3 {
             width: 100%;
             height: 50px;
             line-height: 50px;
@@ -321,7 +366,8 @@
             border-bottom: 3px solid black;
             margin-bottom: 18px;
         }
-        .likeData_box>.my_hide{
+
+        .likeData_box > .my_hide {
             padding: 0;
             margin: 0;
             position: absolute;
@@ -333,18 +379,20 @@
             display: block;
             z-index: 1000;
         }
+
         /*一条帖子*/
-        .log_box>div{
+        .log_box > div {
             width: 100%;
             height: 60px;
             padding: 24px 18px 13px;
             box-sizing: border-box;
             position: relative;
-            border-bottom: 1px solid #ededed ;
+            border-bottom: 1px solid #ededed;
             margin-bottom: 25px;
 
         }
-        .log_box>div>a{
+
+        .log_box > div > a {
             display: block;
             margin: 0;
             padding: 0;
@@ -360,10 +408,11 @@
 
             cursor: pointer;
             overflow: hidden;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
             white-space: nowrap;
         }
-        .log_box>div>span{
+
+        .log_box > div > span {
             display: block;
             margin: 0;
             padding: 0;
@@ -378,10 +427,11 @@
 
             white-space: nowrap;
             overflow: hidden;
-            text-overflow:ellipsis;
+            text-overflow: ellipsis;
 
         }
-        .log_box>div>span>a{
+
+        .log_box > div > span > a {
             display: block;
             height: 100%;
             width: 80px;
@@ -395,7 +445,8 @@
             cursor: pointer;
 
         }
-        .my_pageing{
+
+        .my_pageing {
             position: absolute;
             right: -62px;
             top: 51px;
@@ -406,7 +457,8 @@
             overflow: hidden;
 
         }
-        .my_pageing>.rolling{
+
+        .my_pageing > .rolling {
             position: absolute;
             top: 25px;
             width: 80%;
@@ -415,19 +467,20 @@
             min-height: 300px;
 
         }
-        .my_pageing>.rolling>div{
+
+        .my_pageing > .rolling > div {
             width: 100%;
             height: 40px;
             line-height: 40px;
             text-align: center;
             background: #ffffff;
-            border-bottom:1px solid #cccccc ;
+            border-bottom: 1px solid #cccccc;
             cursor: pointer;
             /*文字不可被选择*/
-            -webkit-user-select:none;
-            -moz-user-select:none;
-            -o-user-select:none;
-            user-select:none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
         }
 
     </style>
@@ -436,114 +489,104 @@
 
     <%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>--%>
     <script type="text/javascript">
-        $(function(){
-        	$.boboTo($(".move_ims_box")[0],$(".controller_points")[0],$(".left_move")[0],$(".right_move")[0],350);
-            var user=$.getCookie("user");
-            var scode=$.getCookie("scode");
-            if(user!=null && scode != null){
-                  $(".myNavBox").html("<a href='${pageContext.request.contextPath}/up/toUpAdmin' class='inAdmin'>管理</a>");
-                  $("#myHome").after("<div class='navBox deleteCookie'>退出</div>");
+        $(function () {
+            $.boboTo($(".move_ims_box")[0], $(".controller_points")[0], $(".left_move")[0], $(".right_move")[0], 350);
+            var user = $.getCookie("user");
+            var scode = $.getCookie("scode");
+            if (user != null && scode != null) {
+                $(".myNavBox").html("<a href='${pageContext.request.contextPath}/up/toUpAdmin' class='inAdmin'>管理</a>");
+                $("#myHome").after("<div class='navBox deleteCookie'>退出</div>");
 
-                  $(".deleteCookie").click(function(){
-                     $.ajax({
-                         url:"${pageContext.request.contextPath}/up/deleteCookie",
-                         type:"get",
-                         success:function (data,states,xhr){
-                              window.location.href="${pageContext.request.contextPath}/";
-                         },
-                         error:function (xhr,status,error){
-                             console.log("请求删除出错了..");
-                         }
-                     });
-                  });
+                $(".deleteCookie").click(function () {
+                    $.ajax({
+                        url: "${pageContext.request.contextPath}/up/deleteCookie",
+                        type: "get",
+                        success: function (data, states, xhr) {
+                            window.location.href = "${pageContext.request.contextPath}/";
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("请求删除出错了..");
+                        }
+                    });
+                });
 
-            }else{
+            } else {
                 $(".myNavBox").html("<a href='${pageContext.request.contextPath}/up/tologin'>登录</a>");
-                $("#myHome").css("width","50px");
+                $("#myHome").css("width", "50px");
             }
 
         });
         //自动发起ajax，获取按点赞数排名的数据与最新博客的数据
-        $(function(){
-            var thisPage=1;
-            var onePageNumber=15;
-            var maxpageNumber=-1;
+        $(function () {
+            var thisPage = 1;
+            var onePageNumber = 15;
+            var maxpageNumber = -1;
             $.ajax({
-                    url:"${pageContext.request.contextPath}/log/getMinDateNumber",
-                    dataType:"json",
-                    type:"get",
+                url: "${pageContext.request.contextPath}/log/getMinDateNumber",
+                dataType: "json",
+                type: "get",
 
-                    success:function (data,states,xhr){
-                        console.log("前端获取到了minDateNumber...");
-                        var minDateNumber=data.minDateNumber;
-                        if(minDateNumber%onePageNumber!=0){
-                            maxpageNumber=parseInt(minDateNumber/onePageNumber)+1;
-                        }else{
-                            maxpageNumber=minDateNumber/onePageNumber;
-                        }
-
-
-                    },
-                    error:function (xhr,status,error){
-                        console.log("出错了..");
+                success: function (data, states, xhr) {
+                    console.log("前端获取到了minDateNumber...");
+                    var minDateNumber = data.minDateNumber;
+                    if (minDateNumber % onePageNumber != 0) {
+                        maxpageNumber = parseInt(minDateNumber / onePageNumber) + 1;
+                    } else {
+                        maxpageNumber = minDateNumber / onePageNumber;
                     }
-            });
-            var isExistMaxpageNumber=setInterval(function(){
-                var request=0
-                if(maxpageNumber!=-1){
-                    getMinDateData();
-                    clearInterval(isExistMaxpageNumber);
-                }
-                request++;
-                if(request>1000){
-                    alert("请检查网络！");
-                }
 
-            },50);
+
+                },
+                error: function (xhr, status, error) {
+                    console.log("出错了..");
+                }
+            });
+
+
             //引入防抖函数
-            function debounce(func,delay) {
+            function debounce(func, delay) {
                 let timer = null;
                 return function (...args) {
-                    if(timer) clearTimeout(timer)
+                    if (timer) clearTimeout(timer)
                     timer = setTimeout(() => {
-                        func.apply(this,args)
-                    },delay)
+                        func.apply(this, args)
+                    }, delay)
                 }
             }
 
             //用于初始化或用户点击下一页且有初始化，就会触发
-            function getMinDateData(){
+            function getMinDateData() {
                 $.ajax({
-                    url:"${pageContext.request.contextPath}/log/MinDateLog?thisPage="+thisPage+"&onePageNumber="+onePageNumber,
-                    dataType:"json",
-                    type:"get",
+                    url: "${pageContext.request.contextPath}/log/MinDateLog?thisPage=" + thisPage + "&onePageNumber=" + onePageNumber,
+                    dataType: "json",
+                    type: "get",
 
-                    success:function (data,states,xhr){
+                    success: function (data, states, xhr) {
                         console.log("最新数据获取到了...");
                         console.log(data);
                         $(".type_content").html("");
-                        $.each(data,function (index,value){
-                            $(".type_content").append("<ul class='oneLog'><li class='logTitle'><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></li><li class='logContent'><div><img src='${pageContext.request.contextPath}"+value.up_headImg+"'  /></div><a href='${pageContext.request.contextPath}/up/toUpHome?upid="+value.up_id+"'>"+value.up_pname+"</a><div class='one_text'>"+value.log_content+"</div></li></ul>");
+                        $.each(data, function (index, value) {
+                            $(".type_content").append("<ul class='oneLog'><li class='logTitle'><a href='${pageContext.request.contextPath}/log/queryByLogId?logid=" + value.log_id + "'>" + value.log_title + "</a></li><li class='logContent'><div><img src='${pageContext.request.contextPath}" + value.up_headImg + "'  /></div><a href='${pageContext.request.contextPath}/up/toUpHome?upid=" + value.up_id + "'>" + value.up_pname + "</a><div class='one_text'>" + value.log_content + "</div></li></ul>");
                         });
 
                     },
-                    error:function (xhr,status,error){
+                    error: function (xhr, status, error) {
                         console.log("出错了..");
                         //使用防抖调用
-                        setTimeout(function() {
+                        setTimeout(function () {
                             getMinDateData()
-                        },200)
+                        }, 200)
                     }
                 });
 
             }
 
-            $(".toNext").click(function(){
-                console.log("页数是="+maxpageNumber);
-                if(maxpageNumber!=-1 && (thisPage+1)<=maxpageNumber){
+            $(".toNext").click(function () {
+                console.log("页数是=" + maxpageNumber);
+                if (maxpageNumber != -1 && (thisPage + 1) <= maxpageNumber) {
                     thisPage++;
                     getMinDateData();
-                }else{
+                } else {
                     alert("未获取到数据！");
                 }
 
@@ -551,183 +594,187 @@
             });
 
 
-            //自动发起ajax请求，获取点赞排行
-            (function () {
-                var firstNumber=10;
-                $.ajax({
-                    url:"${pageContext.request.contextPath}/log/getUpTopNumberFirst?upTopNumberFirstNumber="+firstNumber,
-                    dataType:"json",
-                    type:"get",
+            <%--//自动发起ajax请求，获取点赞排行--%>
+            <%--(function () {--%>
+            <%--    var firstNumber=10;--%>
+            <%--    $.ajax({--%>
+            <%--        url:"${pageContext.request.contextPath}/log/getUpTopNumberFirst?upTopNumberFirstNumber="+firstNumber,--%>
+            <%--        dataType:"json",--%>
+            <%--        type:"get",--%>
 
-                    success:function (data,states,xhr){
-                        //console.log("前端获取到了UptopData...");
-                        //console.log(data); //会输出用户密码
-                        $(".maxs_box_content").html("");
-                        $.each(data,function (index,value){
-                            console.log("up_headImg",value.up_headImg);
-                            $(".maxs_box_content").append("<div><div><img src='${pageContext.request.contextPath}"+value.up_headImg+"'></div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");
-                        });
+            <%--        success:function (data,states,xhr){--%>
+            <%--            //console.log("前端获取到了UptopData...");--%>
+            <%--            //console.log(data); //会输出用户密码--%>
+            <%--            $(".maxs_box_content").html("");--%>
+            <%--            $.each(data,function (index,value){--%>
+            <%--                console.log("up_headImg",value.up_headImg);--%>
+            <%--                $(".maxs_box_content").append("<div><div><img src='${pageContext.request.contextPath}"+value.up_headImg+"'></div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></div>");--%>
+            <%--            });--%>
 
-                    },
-                    error:function (xhr,status,error){
-                        setTimeout(function() {
-                            this()
-                        },200)
-                        console.log("出错了..");
-                    }
-                });
-            })()
-            $("#myHome").click(function(){
-                window.location.href="${pageContext.request.contextPath}/up/toLogon";
+            <%--        },--%>
+            <%--        error:function (xhr,status,error){--%>
+            <%--            setTimeout(function() {--%>
+            <%--                this()--%>
+            <%--            },200)--%>
+            <%--            console.log("出错了..");--%>
+            <%--        }--%>
+            <%--    });--%>
+            <%--})()--%>
+            $("#myHome").click(function () {
+                window.location.href = "${pageContext.request.contextPath}/up/toLogon";
 
             });
 
             <%--搜索功能的实现--%>
 
-            $(".my_hide").click(function(){
-                $(".left_box,.right_box").css("display","block");
-                $(".likeData_box").css("display","none");
+            $(".my_hide").click(function () {
+                $(".left_box,.right_box").css("display", "block");
+                $(".likeData_box").css("display", "none");
 
             });
             //回车搜索功能
-            $(".my_so_input").keydown(function(event){
-                event=event ||window.event;
-                if(event.keyCode==13){
-                     $(".my_so").click();
+            $(".my_so_input").keydown(function (event) {
+                event = event || window.event;
+                if (event.keyCode == 13) {
+                    $(".my_so").click();
 
                 }
 
             });
 
             //现在的页数
-            var so_thisPage=1;
+            var so_thisPage = 1;
             //最大页数,控制着可生成的最大盒子数
-            var maxPageNumber=-1;
+            var maxPageNumber = -1;
             //盒子父元素
-            var pageBox=$(".rolling");
+            var pageBox = $(".rolling");
 
 
             //搜索结果的条数及内容
-            var likeNumber=-1;
-            var likeValue="";
-            $(".my_so").click(function(){
-                likeValue=$(".my_so_input").val();
+            var likeNumber = -1;
+            var likeValue = "";
+            $(".my_so").click(function () {
+                likeValue = $(".my_so_input").val();
                 //发出请求获取搜索结果的条数
-                if(likeValue!=""){
+                if (likeValue != "") {
                     /*隐藏了主页的左右box*/
-                    $(".left_box,.right_box").css("display","none");
-                    $(".likeData_box").css("display","block");
+                    $(".left_box,.right_box").css("display", "none");
+                    $(".likeData_box").css("display", "block");
                     $.ajax({
-                        url:"${pageContext.request.contextPath}/log/getLikeNumber?likeValue="+likeValue,
-                        dataType:"json",
-                        type:"get",
-                        success:function (data,states,xhr){
+                        url: "${pageContext.request.contextPath}/log/getLikeNumber?likeValue=" + likeValue,
+                        dataType: "json",
+                        type: "get",
+                        success: function (data, states, xhr) {
                             console.log("前端获取到了搜索将会得到的条数...");
-                            if((likeNumber=data.likeNumber)>0){
+                            if ((likeNumber = data.likeNumber) > 0) {
                                 //计算能分多少页
-                                console.log("记录数是="+likeNumber%15);
-                                maxPageNumber=(likeNumber%15!=0)?(parseInt(likeNumber/15)+1):(parseInt(likeNumber/15));
+                                console.log("记录数是=" + likeNumber % 15);
+                                maxPageNumber = (likeNumber % 15 != 0) ? (parseInt(likeNumber / 15) + 1) : (parseInt(likeNumber / 15));
                                 $(".rolling").html("");
                                 //初始化前端分页组件
-                                MyPageing(so_thisPage,maxPageNumber,pageBox);
+                                MyPageing(so_thisPage, maxPageNumber, pageBox);
                                 //初始化页面内容
-                                toGetLimitDate(likeValue,1,15);
+                                toGetLimitDate(likeValue, 1, 15);
                             }
                         },
-                        error:function (xhr,status,error){
+                        error: function (xhr, status, error) {
                             console.log("出错了..");
                         }
                     });
 
 
-                }else{
+                } else {
                     alert("内容不能为空！");
                 }
 
             });
-            function toGetLimitDate(likeValue,requestPageNumber,numberToPage){
+
+            function toGetLimitDate(likeValue, requestPageNumber, numberToPage) {
                 $.ajax({
-                        url:"${pageContext.request.contextPath}/log/getLogLikeData?likeValue="+likeValue+"&requestPageNumber="+requestPageNumber+"&numberToPage="+numberToPage,
-                        dataType:"json",
-                        type:"get",
+                    url: "${pageContext.request.contextPath}/log/getLogLikeData?likeValue=" + likeValue + "&requestPageNumber=" + requestPageNumber + "&numberToPage=" + numberToPage,
+                    dataType: "json",
+                    type: "get",
 
-                        success:function (data,states,xhr){
-                            console.log("前端获取到了搜索数据...");
-                            console.log(data);
-                            $(".log_box").html("");
+                    success: function (data, states, xhr) {
+                        console.log("前端获取到了搜索数据...");
+                        console.log(data);
+                        $(".log_box").html("");
 
-                            $.each(data,function (index,value){
-                                $(".log_box").append("<div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a><span>"+value.log_content+"</span></div>");
-                            });
+                        $.each(data, function (index, value) {
+                            $(".log_box").append("<div><a href='${pageContext.request.contextPath}/log/queryByLogId?logid=" + value.log_id + "'>" + value.log_title + "</a><span>" + value.log_content + "</span></div>");
+                        });
 
-                        },
-                        error:function (xhr,status,error){
-                            console.log("出错了..");
-                        }
-                    });
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("出错了..");
+                    }
+                });
 
             }
 
             <%--创新分页组件--%>
-            function MyPageing(so_thisPage,maxPageNumber,pageBox){
+
+            function MyPageing(so_thisPage, maxPageNumber, pageBox) {
                 //现在最高的盒子是
-                thisMaxboxNumber=0;
+                thisMaxboxNumber = 0;
                 //点过的最大高度
-                pointMaxboxNumber=0;
-                toCBox((maxPageNumber>5)?5:maxPageNumber);
-                $(".rolling").on("click","div",function (){
-                      var number=(so_thisPage=parseInt($(this).text()))-3;
+                pointMaxboxNumber = 0;
+                toCBox((maxPageNumber > 5) ? 5 : maxPageNumber);
+                $(".rolling").on("click", "div", function () {
+                    var number = (so_thisPage = parseInt($(this).text())) - 3;
 
-                      $(this).css({
-                          "borderBottom": "2px solid #34e79b"
-                      }).siblings("div").css({
-                           "borderBottom": "1px solid #ededed"
-                      });
-                      //根据点击的数字获取对应的页面
-                      toGetLimitDate(likeValue,so_thisPage,15);
-                      if(so_thisPage>pointMaxboxNumber){
-                         var addNumber=0;
-                         ((thisMaxboxNumber+(so_thisPage-pointMaxboxNumber))>maxPageNumber)?(addNumber=maxPageNumber-thisMaxboxNumber):(addNumber=so_thisPage-pointMaxboxNumber);
-                         toCBox(addNumber);
-                         pointMaxboxNumber=so_thisPage;
-                      }
-                   　　if(number>0){
+                    $(this).css({
+                        "borderBottom": "2px solid #34e79b"
+                    }).siblings("div").css({
+                        "borderBottom": "1px solid #ededed"
+                    });
+                    //根据点击的数字获取对应的页面
+                    toGetLimitDate(likeValue, so_thisPage, 15);
+                    if (so_thisPage > pointMaxboxNumber) {
+                        var addNumber = 0;
+                        ((thisMaxboxNumber + (so_thisPage - pointMaxboxNumber)) > maxPageNumber) ? (addNumber = maxPageNumber - thisMaxboxNumber) : (addNumber = so_thisPage - pointMaxboxNumber);
+                        toCBox(addNumber);
+                        pointMaxboxNumber = so_thisPage;
+                    }
+                    if (number > 0) {
                         //实现了的自主滑动
-                         var moveUp=number*40;
-                         $(".rolling").stop(true,true).animate({
-                            "top":-(moveUp-25)
+                        var moveUp = number * 40;
+                        $(".rolling").stop(true, true).animate({
+                            "top": -(moveUp - 25)
 
-                         },200);
+                        }, 200);
 
-                      }else{
-                         $(".rolling").stop(true,true).animate({
-                            "top":"25px"
+                    } else {
+                        $(".rolling").stop(true, true).animate({
+                            "top": "25px"
 
-                         },200);
-                      }
+                        }, 200);
+                    }
 
                 });
+
                 //生成指定数量的盒子
-                function toCBox(number){
-                    if(number!=null){
-                        for(var i=0;i<number;i++){
-                            pageBox.append("<div>"+(++thisMaxboxNumber)+"</div>");
+                function toCBox(number) {
+                    if (number != null) {
+                        for (var i = 0; i < number; i++) {
+                            pageBox.append("<div>" + (++thisMaxboxNumber) + "</div>");
                         }
                     }
                     console.log("添加成功。。。");
                 }
 
             }
+
             <%--最新与公告的切换--%>
-            $(".type_box_title").on("click","div",function(){
+            $(".type_box_title").on("click", "div", function () {
                 $(this).css({
-                    "borderBottom":"2px solid #47bb4c",
-                    "color":"#47bb4c"
+                    "borderBottom": "2px solid #47bb4c",
+                    "color": "#47bb4c"
                 }).siblings("div").css({
-                    "borderBottom":"none",
-                    "color":"grey"
+                    "borderBottom": "none",
+                    "color": "grey"
                 });
-                var content_box=$(".type_box>.inContent_box").eq($(this).index());
+                var content_box = $(".type_box>.inContent_box").eq($(this).index());
                 content_box.fadeIn(350).siblings(".inContent_box").fadeOut(300);
             });
 
@@ -740,7 +787,7 @@
 </head>
 
 <body>
-<div class="topbox navbar-fixed-top navbar navbar-default" >
+<div class="topbox navbar-fixed-top navbar navbar-default">
     <div class="my_title">
         <small>猿记网</small>
     </div>
@@ -760,10 +807,9 @@
     </div>
 
 
-
-    <div class="navbar-form navbar-right  so_box" >
+    <div class="navbar-form navbar-right  so_box">
         <div class="form-group">
-            <input type="text" class="form-control my_so_input"  placeholder="搜索文章" value="" />
+            <input type="text" class="form-control my_so_input" placeholder="搜索文章" value=""/>
         </div>
         <button type="button" class="btn btn-default navbar-btn my_so">搜索</button>
     </div>
@@ -775,9 +821,9 @@
                 <!-- 轮播图 -->
                 <div class="bobo_box">
                     <ul class="move_ims_box">
-                        <li><img src="${pageContext.request.contextPath}/img/k1.jpg" /></li>
-                        <li><img src="${pageContext.request.contextPath}/img/k2.png" /></li>
-                        <li><img src="${pageContext.request.contextPath}/img/k3.png" /></li>
+                        <li><img src="${pageContext.request.contextPath}/img/k1.jpg"/></li>
+                        <li><img src="${pageContext.request.contextPath}/img/k2.png"/></li>
+                        <li><img src="${pageContext.request.contextPath}/img/k3.png"/></li>
                     </ul>
                     <ul class="controller_points">
 
@@ -794,8 +840,20 @@
                 <div class="toNext">
                     下一页
                 </div>
+                <%--pointTops--%>
                 <div class="type_content my_minDate inContent_box">
-
+                    <c:forEach items="${newLogs}" var="item">
+                        <ul class='oneLog'>
+                            <li class='logTitle'>
+                                <a href='${pageContext.request.contextPath}/log/queryByLogId?logid=${item.log_id}'>${item.log_title}</a>
+                            </li>
+                            <li class='logContent'>
+                                <div><img src='${pageContext.request.contextPath}${item.up_headImg}'/></div>
+                                <a href='${pageContext.request.contextPath}/up/toUpHome?upid=${value.up_id}'>${item.up_pname}</a>
+                                <div class='one_text'>${item.log_content}</div>
+                            </li>
+                        </ul>
+                    </c:forEach>
                 </div>
                 <div class="notice inContent_box">
 
@@ -811,7 +869,14 @@
                     <div>榜单</div>
                 </div>
                 <div class="maxs_box_content">
+                    <%--获取榜单信息--%>
+                    <c:forEach items="${pointTops}" var="item">
+                        <div>
+                            <div><img src='${pageContext.request.contextPath}${item.up_headImg}'></div>
+                            <a href='${pageContext.request.contextPath}/log/queryByLogId?logid=${item.log_id}'>${item.log_title}</a>
+                        </div>
 
+                    </c:forEach>
                 </div>
             </div>
 
@@ -834,7 +899,6 @@
         </div>
 
     </div>
-
 
 
 </main>

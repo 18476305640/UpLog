@@ -21,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -302,9 +303,39 @@ public class LogController {
 
 
 
+}
+@Controller
+class IndexController {
+    @Autowired
+    @Qualifier("LogServiceImpl")
+    private LogService logService;
 
+    @Autowired
+    @Qualifier("CommentServiceImpl")
+    private CommentService commentService;
 
+    @Autowired
+    @Qualifier("UpServiceImpl")
+    private UpService upService;
 
+    @RequestMapping("/")
+    public String toIndex(Model model) throws JsonProcessingException {
+        System.out.println("准备跳转到首页！！");
+        List<MinDateLog> pointTops = logService.queryByUpTop(10);
 
+        /*http://localhost:8080/log/MinDateLog?thisPage=1&onePageNumber=15*/
+        /*MinDateLog(Integer thisPage,Integer onePageNumber)*/
+
+        List<MinDateLog> newLogs = logService.queryByMinDate(0, 15);
+        //去除文字样式
+        for (MinDateLog md:newLogs){
+            md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),45,"..."));
+
+        }
+
+        model.addAttribute("newLogs",newLogs);
+        model.addAttribute("pointTops",pointTops);
+        return "index_";
+    }
 
 }
