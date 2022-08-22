@@ -105,7 +105,7 @@ public class UpController {
             CookieUtils.addCookie(response,"user",up.getUp_name(),604800,"/");
             CookieUtils.addCookie(response,"scode",MD5.encrypByMd5(password),604800,"/");
             model.addAttribute("isLogin",true);
-            return "redirect:/index_.jsp";
+            return "redirect:/";
         }else {
             model.addAttribute("err",info);
         }

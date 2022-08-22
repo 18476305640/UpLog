@@ -43,8 +43,6 @@ public class PointLogController {
 
         if(log!=null){
             System.out.println("原log点赞数据=顶"+log.getLog_top()+";踩"+log.getLog_bottom());
-            System.out.println(0011);
-
         }
         System.out.println(3);
 
