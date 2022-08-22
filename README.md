@@ -14,3 +14,6 @@
 5、根据http://ip:tomcat端口 访问即可！
 
 详细教程：https://www.cnblogs.com/zjazn/p/15619456.html
+
+效果：
+![](https://fastly.jsdelivr.net/gh/18476305640/typora@master/image/16611432052291661143205077.png)
