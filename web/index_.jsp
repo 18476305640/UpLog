@@ -63,6 +63,7 @@
             line-height: 50px;
             background: #0d84c1;
             overflow: hidden;
+            border-bottom: 1px solid #f5f5f5;
         }
 
         .navBox {
@@ -101,7 +102,7 @@
 
         .my_context {
             width: 100%;
-            min-height: 1000px;
+            height: 1780px;
             padding-top: 15px;
             background-color: #f5f5f5;
 
@@ -109,10 +110,13 @@
 
         .my_context > .full_autoBox {
             width: 85%;
-            min-height: 1000px;
 
             background: #f5f5f5;
             margin: 50px auto;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: start;
 
         }
 
@@ -120,7 +124,6 @@
             width: 70%;
             height: 100%;
 
-            float: left;
 
         }
 
@@ -129,13 +132,11 @@
             height: 350px;
             position: relative;
             background: #ffffff;
-
         }
 
         .imgs_box > img {
             width: 100%;
             height: 100%;
-
         }
 
         .left_box > .type_box {
@@ -250,7 +251,6 @@
             width: 29%;
             height: 1511px;
             background: #ffffff;
-            float: right;
             background: #ffffff;
 
             overflow: hidden;
@@ -482,6 +482,16 @@
             -o-user-select: none;
             user-select: none;
         }
+        #footer {
+            width: 100%;
+            height: 60px;
+
+        }
+        #footer > p {
+            text-align: center;
+            line-height: 60px;
+        }
+
 
     </style>
 
@@ -898,11 +908,15 @@
             </div>
         </div>
 
+
     </div>
 
 
-</main>
 
+</main>
+<footer id="footer">
+    <p>粤ICP备XXXXX号</p>
+</footer>
 </body>
 </html>
 
