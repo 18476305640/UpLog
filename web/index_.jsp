@@ -482,6 +482,9 @@
             -o-user-select: none;
             user-select: none;
         }
+        .my_so_input {
+            box-shadow: inset 0 0 5px #f5f5f5;
+        }
         #footer {
             width: 100%;
             height: 60px;
@@ -491,6 +494,7 @@
             text-align: center;
             line-height: 60px;
         }
+
 
 
     </style>
