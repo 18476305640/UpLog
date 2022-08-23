@@ -483,7 +483,7 @@
             user-select: none;
         }
         .my_so_input {
-            box-shadow: inset 0 0 5px #f5f5f5;
+            box-shadow: inset 0 0 5px #bbbbbb;
         }
         #footer {
             width: 100%;
