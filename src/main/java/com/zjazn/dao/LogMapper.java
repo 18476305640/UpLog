@@ -49,4 +49,6 @@ public interface LogMapper {
     int getTypeLogNumber(@Param("state") float state,@Param("likeValue")String likeValue);
     //获取总log条数
     int getAllLogNumber(@Param("likeValue")String likeValue);
+    // 获取指定up 需要审核的帖子数量
+    Integer selectCheckComplianceCountByUpId(@Param("upId") Integer upid);
 }

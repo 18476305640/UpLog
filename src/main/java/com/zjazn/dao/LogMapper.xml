@@ -82,6 +82,9 @@
             AND log_title like CONCAT('%',#{likeValue},'%');
         </if>
     </select>
-    
+    <select id="selectCheckComplianceCountByUpId" resultType="java.lang.Integer">
+        select count(*) from log WHERE up_id = #{upId} and log_state = 0
+    </select>
+
 
 </mapper>

@@ -85,6 +85,12 @@
             text-overflow: ellipsis;
 
         }
+        #msg {
+            display: block;
+            margin-right: 30px;
+            float: right;
+            color: #e93536;
+        }
     </style>
     <script type="text/javascript">
         $(function(){
@@ -228,6 +234,9 @@
     <main>
         <div class="my_pagetitle">
             <span>Log管理页面</span>
+            <c:if test="${logCheckComplianceCount != 0}" >
+            <span id="msg"  >当前有【${logCheckComplianceCount}】条帖子正在审核，请悄等~</span>
+            </c:if>
         </div>
         <div class="my_addPageMain">
             <table class="table table-hover">

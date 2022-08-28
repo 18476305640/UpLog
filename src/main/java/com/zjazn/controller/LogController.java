@@ -2,6 +2,7 @@ package com.zjazn.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zjazn.dao.LogMapper;
 import com.zjazn.data.CommentAndUp;
 import com.zjazn.data.MinDateLog;
 import com.zjazn.pojo.Comment;
@@ -42,6 +43,9 @@ public class LogController {
     private LogService logService;
 
     @Autowired
+    private LogMapper logMapper;
+
+    @Autowired
     @Qualifier("CommentServiceImpl")
     private CommentService commentService;
 
@@ -73,6 +77,9 @@ public class LogController {
         model.addAttribute("logs",logs);
         //model.addAttribute("logComments",logComments);
         System.out.println(logs.toString());
+
+        Integer logCheckComplianceCount = logMapper.selectCheckComplianceCountByUpId(upid);
+        model.addAttribute("logCheckComplianceCount",logCheckComplianceCount);
         return "upLog_children";
     }
     @RequestMapping("/toLogUpdate")
