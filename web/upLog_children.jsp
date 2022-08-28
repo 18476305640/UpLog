@@ -103,7 +103,7 @@
             });
             $("tbody").on("click",".oneLog_controll>button:nth-child(2)",function (){
            　　　var logid=$(this).parent("td").siblings(".logInfo").text();
-                if(logid!=""){
+                if(logid!="" && window.confirm("确定要删除吗？")){
                     window.location.href="${pageContext.request.contextPath}/log/toDeleteLog?logid="+logid
                 }
             });

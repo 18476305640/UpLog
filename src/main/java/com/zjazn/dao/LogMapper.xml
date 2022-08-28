@@ -30,7 +30,7 @@
         select count(*) from log;
     </select>
     <select id="queryByUpidLimit" resultType="Log">
-        select * from log where up_id=#{up_id} and log_state=1 ORDER BY log_date DESC  limit #{started},#{length};
+        select * from log where up_id=#{up_id} and log_state in (1,0,-1) ORDER BY log_date DESC  limit #{started},#{length};
     </select>
     <select id="getOneUpTablePageNumber" resultType="Integer">
         select count(*) from log where up_id=#{up_id} and log_state>0;
