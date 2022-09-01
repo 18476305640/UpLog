@@ -19,6 +19,7 @@ public class Log {
     private Integer log_bottom;
     private Date log_update_date;
     private float log_state;
+    private Long log_read;
 
 
 }

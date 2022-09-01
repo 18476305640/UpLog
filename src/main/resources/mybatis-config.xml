@@ -14,6 +14,7 @@
         <mapper resource="com/zjazn/dao/UpMapper.xml"/>
         <mapper resource="com/zjazn/dao/PointLogMapper.xml"/>
         <mapper resource="com/zjazn/dao/PointLogMapper.xml"/>
+        <mapper resource="com/zjazn/dao/LogReadMapper.xml"/>
     </mappers>
 
 </configuration>

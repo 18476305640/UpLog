@@ -39,7 +39,7 @@
         SELECT * FROM log left join up on log.up_id = up.up_id where log_state>0 ORDER BY log_date desc ,log_update_date desc limit #{started},#{length};
     </select>
     <select id="queryByUpTop" resultType="MinDateLog">
-        SELECT * FROM LOG LEFT JOIN up ON log.up_id = up.up_id WHERE (DATEDIFF(DATE_ADD(DATE_ADD(LAST_DAY(NOW()),INTERVAL 1 DAY),INTERVAL -1 MONTH),log.log_date) BETWEEN -30 AND 1 ) and log_state>0 ORDER BY log_top DESC ,log_bottom ASC LIMIT 0,#{topNumber};
+        SELECT * FROM LOG LEFT JOIN up ON log.up_id = up.up_id WHERE (DATEDIFF(NOW(),log_date) &lt; 30)  AND log_state>0 ORDER BY log_top DESC ,log_bottom ASC LIMIT 0,#{topNumber};
 
     </select>
     <select id="getMinDatePageNumber" resultType="int">
