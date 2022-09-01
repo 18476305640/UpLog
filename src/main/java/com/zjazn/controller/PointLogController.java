@@ -61,10 +61,10 @@ public class PointLogController {
             //作实际log点赞或踩的修改
             if(type==-1){
                 logService.updateLogByTB(log_id,((log.getLog_top()==null)?0:log.getLog_top()),((log.getLog_bottom()==null)?0:log.getLog_bottom())+1);
-                map.put("showData","踩了一脚~");
+                map.put("showData","我们会持续优化内容，为你提供更好的内容服务！");
             }else if (type==1){
                 int i = logService.updateLogByTB(log_id, ((log.getLog_top()==null)?0:log.getLog_top()) + 1,((log.getLog_bottom()==null)?0:log.getLog_bottom()));
-                map.put("showData","点赞了一波~");
+                map.put("showData","感谢您的点赞！");
             }
 
         }else{
@@ -85,10 +85,12 @@ public class PointLogController {
                 newPointLog.setPoint_type(type);
                 if (type==1){
                     logService.updateLogByTB(log_id,((log.getLog_top()==null)?0:log.getLog_top())+1,((log.getLog_bottom()==null)?0:log.getLog_bottom())-1);
-                    map.put("showData","替换成了赞~");
+                    // 替换成了踩
+                    map.put("showData","我们会持续优化内容，为你提供更好的内容服务！");
                 }else if (type==-1){
                     logService.updateLogByTB(log_id,((log.getLog_top()==null)?0:log.getLog_top())-1,((log.getLog_bottom()==null)?0:log.getLog_bottom())+1);
-                    map.put("showData","替换成了踩~");
+                    // 替换成了赞
+                    map.put("showData","我们会持续优化内容，为你提供更好的内容服务！");
                 }
             }
         }
