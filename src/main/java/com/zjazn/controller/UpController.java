@@ -248,10 +248,12 @@ public class UpController {
             up = new Up();
             up.setUp_name(user);
             up.setUp_password(password);
-            up.setUp_pname(pname);
+            up.setUp_pname(pname.isEmpty()?"用户"+System.currentTimeMillis():pname);
             up.setUp_ptext(ptext);
             up.setUp_cdate(new Date());
             up.setUp_power(0);
+            // 设置用户注册的默认头像
+            up.setUp_headImg("https://pic.cnblogs.com/avatar/2160655/20220805233849.png");
             int i = upService.addUp(up);
             if(i>0){
                 return "login";

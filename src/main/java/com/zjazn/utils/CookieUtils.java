@@ -19,6 +19,7 @@ public class CookieUtils {
     }
     public static String getCookie(HttpServletRequest request, String key){
         Cookie[] cookies = request.getCookies();
+        if (cookies == null) return null;
         System.out.println(cookies);
         for (Cookie cookie:cookies){
             if(key.equals(cookie.getName())){
@@ -27,9 +28,6 @@ public class CookieUtils {
             }
         }
         return null;
-
-
-
     }
 
 }
