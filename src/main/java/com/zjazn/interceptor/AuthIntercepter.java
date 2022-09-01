@@ -40,9 +40,10 @@ public class AuthIntercepter implements HandlerInterceptor {
             request.setAttribute("userId",up.getUp_id());
             request.setAttribute("passwordMd5",passwordMd5);
             request.setAttribute("isSysUser",isSysUser);
+            request.setAttribute("up",up);
         }
 
-        System.out.println("MyIntercepter01 preHandle......");
+//        System.out.println("MyIntercepter01 preHandle......");
         return true;
     }
 
@@ -57,7 +58,7 @@ public class AuthIntercepter implements HandlerInterceptor {
      */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("MyIntercepter01 postHandle......");
+//        System.out.println("MyIntercepter01 postHandle......");
     }
 
     /**
@@ -70,6 +71,6 @@ public class AuthIntercepter implements HandlerInterceptor {
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        System.out.println("MyIntercepter01 afterCompletion......");
+//        System.out.println("MyIntercepter01 afterCompletion......");
     }
 }

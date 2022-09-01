@@ -2,13 +2,14 @@ package com.zjazn.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zjazn.interceptor.AuthEnum;
+import com.zjazn.interceptor.AuthUtils;
 import com.zjazn.pojo.Log;
 import com.zjazn.pojo.Up;
 import com.zjazn.service.LogService;
 import com.zjazn.service.UpService;
 import com.zjazn.utils.CookieUtils;
 import com.zjazn.utils.MD5;
-import com.zjazn.utils.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -201,10 +201,8 @@ public class UpController {
         }
         //基本信息的修改
         System.out.println("修改"+upid+";pname="+pname+";ptext="+ptext);
-        String user = CookieUtils.getCookie(request, "user");
-        String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isSysUser(upService, user, scode);
-        if(hasRoot){
+        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
+        if(isSysUser){
             Up up = new Up();
             up.setUp_id(Integer.valueOf(upid));
             up.setUp_pname(pname);
@@ -279,12 +277,12 @@ public class UpController {
 
     @RequestMapping("/toMyAdmin")
     public String toMyAdmin(String upid,HttpServletResponse response,HttpServletRequest request){
-        String user = CookieUtils.getCookie(request, "user");
-        String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isSysUser(upService, user, scode);
-        if(hasRoot){
+        String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
+        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
+
+        if(isSysUser){
             System.out.println("特权：密码认证成功~");
-            Up up = upService.queryByUserName(user);
+            Up up = upService.queryByUserName(userName);
             if (up.getUp_power()>=100){
                 //认证成功，可以进入特权模式
                 System.out.println("普通管理员1~");

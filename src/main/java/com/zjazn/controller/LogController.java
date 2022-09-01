@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zjazn.dao.LogMapper;
 import com.zjazn.data.CommentAndUp;
 import com.zjazn.data.MinDateLog;
+import com.zjazn.interceptor.AuthEnum;
+import com.zjazn.interceptor.AuthUtils;
 import com.zjazn.pojo.Comment;
 import com.zjazn.pojo.Log;
 import com.zjazn.pojo.Up;
@@ -12,7 +14,6 @@ import com.zjazn.service.CommentService;
 import com.zjazn.service.LogService;
 import com.zjazn.service.UpService;
 import com.zjazn.utils.CookieUtils;
-import com.zjazn.utils.Root;
 import com.zjazn.utils.ShowChineseUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,12 +128,11 @@ public class LogController {
     @RequestMapping("/toAddLog")
     public String toAddLog(Model model,HttpServletRequest request){
         System.out.println("到了后台");
-//        model.addAttribute("upid",upid);
-        String user = CookieUtils.getCookie(request, "user");
-        String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isSysUser(upService, user, scode);
-        if (hasRoot){
-            Up up = upService.queryByUserName(user);
+        String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
+        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
+
+        if (isSysUser){
+            Up up = upService.queryByUserName(userName);
             Integer upid = up.getUp_id();
             model.addAttribute("upid",upid);
             return "AddLogPage";
@@ -172,12 +172,11 @@ public class LogController {
     @RequestMapping("/getPageNumber")
     @ResponseBody
     public String getPageNumber(Integer onePageNumber,HttpServletResponse response,HttpServletRequest request) throws JsonProcessingException {
-        String user = CookieUtils.getCookie(request, "user");
-        String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isSysUser(upService, user, scode);
+        String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
+        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
         int colNumber=0;
-        if (hasRoot) {
-            Up up = upService.queryByUserName(user);
+        if (isSysUser) {
+            Up up = upService.queryByUserName(userName);
             colNumber = logService.getOneUpTablePageNumber(up.getUp_id());
         }
 
@@ -201,12 +200,11 @@ public class LogController {
         System.out.println("初始化后端...");
         System.out.println(nextPage+";"+pageNumber);
 
-        String user = CookieUtils.getCookie(request, "user");
-        String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isSysUser(upService, user, scode);
+        String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
+        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
 
-        if (hasRoot){
-            Up up = upService.queryByUserName(user);
+        if (isSysUser){
+            Up up = upService.queryByUserName(userName);
             Integer upid = up.getUp_id();
             System.out.println("初始化分页数据="+upid+";"+nextPage+";"+pageNumber);
             List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);

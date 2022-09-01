@@ -2,6 +2,8 @@ package com.zjazn.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zjazn.interceptor.AuthEnum;
+import com.zjazn.interceptor.AuthUtils;
 import com.zjazn.pojo.Log;
 import com.zjazn.pojo.Report;
 import com.zjazn.pojo.Up;
@@ -9,7 +11,6 @@ import com.zjazn.service.LogService;
 import com.zjazn.service.ReportService;
 import com.zjazn.service.UpService;
 import com.zjazn.utils.CookieUtils;
-import com.zjazn.utils.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -43,9 +44,10 @@ public class ReportController {
         System.out.println("后端获取到了前端提交举报的信息："+logid+";"+reportContent);
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isSysUser(upService, user, scode);
+        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
+
         HashMap<String, String> map = new HashMap<>();
-        if(hasRoot){
+        if(isSysUser){
             /*当认证成功时*/
             Up up = upService.queryByUserName(user);
             Report report = new Report();

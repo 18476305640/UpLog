@@ -85,11 +85,11 @@ public class PointLogController {
                 newPointLog.setPoint_type(type);
                 if (type==1){
                     logService.updateLogByTB(log_id,((log.getLog_top()==null)?0:log.getLog_top())+1,((log.getLog_bottom()==null)?0:log.getLog_bottom())-1);
-                    // 替换成了踩
-                    map.put("showData","我们会持续优化内容，为你提供更好的内容服务！");
+                    // 替换成了赞
+                    map.put("showData","感谢您的点赞！");
                 }else if (type==-1){
                     logService.updateLogByTB(log_id,((log.getLog_top()==null)?0:log.getLog_top())-1,((log.getLog_bottom()==null)?0:log.getLog_bottom())+1);
-                    // 替换成了赞
+                    // 替换成了踩
                     map.put("showData","我们会持续优化内容，为你提供更好的内容服务！");
                 }
             }

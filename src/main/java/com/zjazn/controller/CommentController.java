@@ -3,18 +3,15 @@ package com.zjazn.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zjazn.data.CommentAndUp;
+import com.zjazn.interceptor.AuthEnum;
+import com.zjazn.interceptor.AuthUtils;
 import com.zjazn.pojo.Comment;
 import com.zjazn.pojo.Up;
 import com.zjazn.service.CommentService;
 import com.zjazn.service.UpService;
-import com.zjazn.utils.CookieUtils;
-import com.zjazn.utils.Root;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 @Controller
 @RequestMapping("/comment")
 public class CommentController {
@@ -52,13 +48,11 @@ public class CommentController {
     @RequestMapping("/addCommentByLog")
     @ResponseBody
     public String addCommentByLog(Integer commentLogId, String commentContent, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
-        System.out.println("后端接收到了"+commentLogId+";"+commentContent);
-        String user = CookieUtils.getCookie(request, "user");
-        String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isSysUser(upService, user, scode);
         HashMap<String,Integer> dataMap = new HashMap<>();
-        if(hasRoot){
-            Up up = upService.queryByUserName(user);
+        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
+        String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
+        if(isSysUser){
+            Up up = upService.queryByUserName(userName);
             Integer up_id = up.getUp_id();
             System.out.println("正在准备添加");
             System.out.println(commentLogId+";"+up_id+"commentContent"+new Date());
