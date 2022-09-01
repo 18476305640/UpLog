@@ -241,7 +241,7 @@
             $(".toUpHome").click(function(){
                 var log_upid=$("#log_upid").val();
                 if(log_upid!=null){
-                    window.location.href="${pageContext.request.contextPath}/up/toUpHome?upid="+upid;
+                    window.location.href="${pageContext.request.contextPath}/up/toUpHome?upid="+log_upid;
                 }
 
 
