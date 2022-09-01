@@ -34,20 +34,12 @@ public class PointLogController {
     @ResponseBody
     //根据前端传过来的参数，进行查询后作相应的操作
     public String updatePointLog(Integer upid,Integer log_id,Integer type) throws JsonProcessingException {
-
-        System.out.println("进入点赞处理程序了..."+upid+";"+log_id+";"+type);
-        PointLog pointLog = pointLogService.queryByUpLogId(upid, log_id);
-        System.out.println(1);
-        Log log = logService.queryByLogId(log_id);
-        System.out.println(2);
-
-        if(log!=null){
-            System.out.println("原log点赞数据=顶"+log.getLog_top()+";踩"+log.getLog_bottom());
+        if (upid == null || log_id == null || type == null) {
+            return "未登录！";
         }
-        System.out.println(3);
-
+        PointLog pointLog = pointLogService.queryByUpLogId(upid, log_id);
+        Log log = logService.queryByLogId(log_id);
         //用于修改或添加一条point记录
-
         PointLog newPointLog = new PointLog();
         newPointLog.setUp_id(upid);
         newPointLog.setLog_id(log_id);
@@ -76,7 +68,7 @@ public class PointLogController {
             }
 
         }else{
-            //可能是替换也可能是取消
+            // 可能是替换也可能是取消
             Integer oldtype = pointLog.getPoint_type();
             if(oldtype==type){
                 //进行取消对应操作

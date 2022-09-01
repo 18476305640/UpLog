@@ -55,7 +55,7 @@ public class CommentController {
         System.out.println("后端接收到了"+commentLogId+";"+commentContent);
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isHasRoot(upService, user, scode);
+        Boolean hasRoot = Root.isSysUser(upService, user, scode);
         HashMap<String,Integer> dataMap = new HashMap<>();
         if(hasRoot){
             Up up = upService.queryByUserName(user);

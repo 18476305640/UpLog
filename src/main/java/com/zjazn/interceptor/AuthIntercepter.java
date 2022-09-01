@@ -1,10 +1,17 @@
 package com.zjazn.interceptor;
 
+import com.zjazn.pojo.Up;
+import com.zjazn.service.UpService;
+import com.zjazn.utils.CookieUtils;
+import com.zjazn.utils.Root;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AuthIntercepter implements HandlerInterceptor {
     /**
@@ -16,8 +23,25 @@ public class AuthIntercepter implements HandlerInterceptor {
      * @return  返回值boolean代表是否放行，true代表放行，false代表中止
      * @throws Exception
      */
+    @Autowired
+    private UpService upService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        String userName = CookieUtils.getCookie(request, "user");
+        String passwordMd5 = CookieUtils.getCookie(request, "scode");
+
+
+        if (userName != null && passwordMd5 != null) {
+            Boolean isSysUser = Root.isSysUser(upService,userName, passwordMd5);
+            if (! isSysUser) return true;
+            Up up = upService.queryByUserName(userName);
+            request.setAttribute("userName",userName);
+            request.setAttribute("userId",up.getUp_id());
+            request.setAttribute("passwordMd5",passwordMd5);
+            request.setAttribute("isSysUser",isSysUser);
+        }
+
         System.out.println("MyIntercepter01 preHandle......");
         return true;
     }

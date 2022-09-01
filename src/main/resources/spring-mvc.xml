@@ -57,9 +57,11 @@
             <!-- 配置拦截器作用的路径 -->
             <mvc:mapping path="/**" />
             <!-- 配置不需要拦截作用的路径 -->
-            <mvc:exclude-mapping path="/" />
-            <mvc:exclude-mapping path="/log/**" />
-            <mvc:exclude-mapping path="/up/toUpHome/**" />
+            <mvc:exclude-mapping path="/fileUpload/**" />
+            <mvc:exclude-mapping path="/img/**" />
+            <mvc:exclude-mapping path="/js/**" />
+            <mvc:exclude-mapping path="/css/**" />
+            <mvc:exclude-mapping path="/**/*.jsp" />
             <!-- 定义<mvc:interceptor>元素中，表示匹配指定路径的请求才进行拦截 -->
             <bean class="com.zjazn.interceptor.AuthIntercepter" />
         </mvc:interceptor>

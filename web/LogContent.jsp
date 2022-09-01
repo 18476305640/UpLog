@@ -239,8 +239,8 @@
 
             //去博客主页
             $(".toUpHome").click(function(){
-                var upid=$("#upid").val();
-                if(upid!=null){
+                var log_upid=$("#log_upid").val();
+                if(log_upid!=null){
                     window.location.href="${pageContext.request.contextPath}/up/toUpHome?upid="+upid;
                 }
 
@@ -294,18 +294,18 @@
                 });
             }
             //点赞或踩
-            var upid=$("#upid").val();
+            var login_upid=$("#login_upid").val();
             var logid=$(".logidInput").val();
             $(".logToTop").click(function(){
-                PointLog(upid,logid,1);
+                PointLog(login_upid,logid,1);
 
             })
              $(".logToBottom").click(function(){
-                PointLog(upid,logid,-1);
+                PointLog(login_upid,logid,-1);
             })
-            function PointLog(upid,log_id,type){
+            function PointLog(login_upid,log_id,type){
                 $.ajax({
-                       url:"${pageContext.request.contextPath}/pointLog/updatePointLog?upid="+upid+"&log_id="+logid+"&type="+type,
+                       url:"${pageContext.request.contextPath}/pointLog/updatePointLog?upid="+login_upid+"&log_id="+logid+"&type="+type,
                        type:"get",
                        dataType:"json",
                        success:function (data,states,xhr){
@@ -316,7 +316,7 @@
 
                        },
                        error:function (xhr,status,error){
-                           console.log("获取评论出错了..");
+                           alert(error.showData || "操作失败，您登录了吗？");
                        }
                 });
 
@@ -401,7 +401,8 @@
             </div>
             <button type="button" class="btn letter_you">私&nbsp;&nbsp;信</button>&nbsp;
             <button type="button" class="btn toUpHome">博主主页</button>
-            <input type="hidden" id="upid" value="${logContent.up_id}">&nbsp;
+            <input type="hidden" id="login_upid" value="${userId}">&nbsp;
+            <input type="hidden" id="log_upid" value="${logContent.up_id}">&nbsp;
             <button type="button" class="btn logToBottom">踩</button>
             <button type="button" class="btn logToTop">点赞</button>&nbsp;
 

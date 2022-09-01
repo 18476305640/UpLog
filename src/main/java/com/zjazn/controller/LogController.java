@@ -30,10 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 @Controller
 @RequestMapping("log")
@@ -54,8 +51,8 @@ public class LogController {
     private UpService upService;
 
     @RequestMapping("/queryByLogId")
-    public String inLog(int logid, Model model){
-
+    public String inLog(int logid, Model model,HttpServletRequest request){
+//        Map<String,Object> userData = (Map<String,Object>)request.getAttribute("userData");
         Log log = logService.queryByLogId(logid);
         List<CommentAndUp> logComments = commentService.queryByLogId(logid);
 
@@ -133,7 +130,7 @@ public class LogController {
 //        model.addAttribute("upid",upid);
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isHasRoot(upService, user, scode);
+        Boolean hasRoot = Root.isSysUser(upService, user, scode);
         if (hasRoot){
             Up up = upService.queryByUserName(user);
             Integer upid = up.getUp_id();
@@ -177,7 +174,7 @@ public class LogController {
     public String getPageNumber(Integer onePageNumber,HttpServletResponse response,HttpServletRequest request) throws JsonProcessingException {
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isHasRoot(upService, user, scode);
+        Boolean hasRoot = Root.isSysUser(upService, user, scode);
         int colNumber=0;
         if (hasRoot) {
             Up up = upService.queryByUserName(user);
@@ -206,7 +203,7 @@ public class LogController {
 
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isHasRoot(upService, user, scode);
+        Boolean hasRoot = Root.isSysUser(upService, user, scode);
 
         if (hasRoot){
             Up up = upService.queryByUserName(user);

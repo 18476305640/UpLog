@@ -43,7 +43,7 @@ public class ReportController {
         System.out.println("后端获取到了前端提交举报的信息："+logid+";"+reportContent);
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isHasRoot(upService, user, scode);
+        Boolean hasRoot = Root.isSysUser(upService, user, scode);
         HashMap<String, String> map = new HashMap<>();
         if(hasRoot){
             /*当认证成功时*/

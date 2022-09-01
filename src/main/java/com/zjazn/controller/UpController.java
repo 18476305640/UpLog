@@ -203,7 +203,7 @@ public class UpController {
         System.out.println("修改"+upid+";pname="+pname+";ptext="+ptext);
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isHasRoot(upService, user, scode);
+        Boolean hasRoot = Root.isSysUser(upService, user, scode);
         if(hasRoot){
             Up up = new Up();
             up.setUp_id(Integer.valueOf(upid));
@@ -279,7 +279,7 @@ public class UpController {
     public String toMyAdmin(String upid,HttpServletResponse response,HttpServletRequest request){
         String user = CookieUtils.getCookie(request, "user");
         String scode = CookieUtils.getCookie(request, "scode");
-        Boolean hasRoot = Root.isHasRoot(upService, user, scode);
+        Boolean hasRoot = Root.isSysUser(upService, user, scode);
         if(hasRoot){
             System.out.println("特权：密码认证成功~");
             Up up = upService.queryByUserName(user);
