@@ -63,7 +63,7 @@
             <mvc:exclude-mapping path="/css/**" />
             <mvc:exclude-mapping path="/**/*.jsp" />
             <!-- 定义<mvc:interceptor>元素中，表示匹配指定路径的请求才进行拦截 -->
-            <bean class="com.zjazn.interceptor.AuthIntercepter" />
+            <bean class="com.zjazn.interceptor.auth.AuthIntercepter" />
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>猿记网-用户登录</title>
+    <%--百度收录验证--%>
+    <meta name="baidu-site-verification" content="code-IWiruWgPE4" />
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" mce_href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.css">
     <style type="text/css">

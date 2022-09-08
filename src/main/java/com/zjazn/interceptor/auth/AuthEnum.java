@@ -1,8 +1,11 @@
-package com.zjazn.interceptor;
+package com.zjazn.interceptor.auth;
 
 import lombok.Data;
 import lombok.Getter;
 
+/*
+* 服务于AuthUtils.java
+* */
 @Getter
 public enum AuthEnum {
     USER_ID("userId"),

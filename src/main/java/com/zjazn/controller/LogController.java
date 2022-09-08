@@ -5,32 +5,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zjazn.dao.LogMapper;
 import com.zjazn.data.CommentAndUp;
 import com.zjazn.data.MinDateLog;
-import com.zjazn.interceptor.AuthEnum;
-import com.zjazn.interceptor.AuthUtils;
-import com.zjazn.pojo.Comment;
+import com.zjazn.interceptor.auth.AuthEnum;
+import com.zjazn.interceptor.auth.AuthUtils;
+import com.zjazn.interceptor.auth.Root;
 import com.zjazn.pojo.Log;
 import com.zjazn.pojo.Up;
 import com.zjazn.service.CommentService;
 import com.zjazn.service.LogService;
 import com.zjazn.service.UpService;
-import com.zjazn.utils.CookieUtils;
 import com.zjazn.utils.ShowChineseUtil;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -63,21 +57,22 @@ public class LogController {
         return "LogContent";
     }
     @RequestMapping("/toUpLog_children")
-    public String toUpLog_children(Integer upid, Model model){
-        System.out.println("进入了，值是："+upid);
-        List<Log> logs = logService.queryByUpId(upid);
-        //List<Comment> logComments = commentService.queryByLogId(logid);
+    public String toUpLog_children(Integer upid, Model model,HttpServletRequest request) throws IOException {
 
-        //去除文字样式
+        if (! Root.isSysUser(request,upid)) return "upLog_children";
+        // 封装一初始化数据
+        int nextPage = 1;
+        int pageNumber = 10;
+        List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
+        //去除文字样式, 让网络传输更快
         for (Log md:logs){
             md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),25,"..."));
         }
-        model.addAttribute("logs",logs);
-        //model.addAttribute("logComments",logComments);
-        System.out.println(logs.toString());
-
+        model.addAttribute("initLog",logs);
+        // 查询要审核的条数
         Integer logCheckComplianceCount = logMapper.selectCheckComplianceCountByUpId(upid);
         model.addAttribute("logCheckComplianceCount",logCheckComplianceCount);
+
         return "upLog_children";
     }
     @RequestMapping("/toLogUpdate")
@@ -202,7 +197,6 @@ public class LogController {
 
         String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
         Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
-
         if (isSysUser){
             Up up = upService.queryByUserName(userName);
             Integer upid = up.getUp_id();

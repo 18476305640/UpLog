@@ -1,17 +1,14 @@
-package com.zjazn.interceptor;
+package com.zjazn.interceptor.auth;
 
 import com.zjazn.pojo.Up;
 import com.zjazn.service.UpService;
 import com.zjazn.utils.CookieUtils;
-import com.zjazn.utils.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AuthIntercepter implements HandlerInterceptor {
     /**
