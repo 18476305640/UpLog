@@ -16,4 +16,4 @@
 详细教程：https://www.cnblogs.com/zjazn/p/15619456.html
 
 效果：<a href="http://124.222.229.234/">点击查看演示</a>
-![](https://fastly.jsdelivr.net/gh/18476305640/typora@master/image/16611432052291661143205077.png)
+
