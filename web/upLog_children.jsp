@@ -92,13 +92,6 @@
 
         }
 
-        .oneLog_content {
-            white-space: normal;
-            overflow: hidden;
-            text-overflow: ellipsis;
-
-        }
-
         #msg {
             display: block;
             margin-right: 30px;
@@ -150,7 +143,7 @@
                             //获取到指定页数数据后，同步到页面
                             console.log("正在把数据放在页面~");
 
-                            var oneLog = $("<tr><td style='display: none' class='logInfo'>" + value.log_id + "</td><td>" + ((thisPage - 1) * 10 + index + 1) + "</td><td>" + value.log_title + "</td><td class='oneLog_content'>" + value.log_content + "</td><td class='oneLog_controll'><button type='button' class='btn btn-success'>修改</button><button type='button' class='btn btn-warning'>删除</button></td></tr>");
+                            var oneLog = $("<tr><td style='display: none' class='logInfo'>" + value.log_id + "</td><td>" + ((thisPage - 1) * 10 + index + 1) + "</td><td class='oneLog_title'>" + value.log_title + "</td><td class='oneLog_content'>" + value.log_content + "</td><td class='oneLog_controll'><button type='button' class='btn btn-success'>修改</button><button type='button' class='btn btn-warning'>删除</button></td></tr>");
                             $(".my_tbody").append(oneLog);
 
                             $(".toPage_input").val(thisPage);
@@ -262,7 +255,7 @@
                 <tr>
                     <td style='display: none' class='logInfo'>${log.log_id}</td>
                     <td>${idxStatus.index+1}</td>
-                    <td>${log.log_title}</td>
+                    <td class="oneLog_title">${log.log_title}</td>
                     <td class='oneLog_content'>${log.log_content}</td>
                     <td class='oneLog_controll'>
                         <button type='button' class='btn btn-success'>修改</button>
