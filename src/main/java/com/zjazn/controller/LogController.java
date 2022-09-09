@@ -188,16 +188,15 @@ public class LogController {
         System.out.println("初始化后端...");
         System.out.println(nextPage+";"+pageNumber);
 
-        String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
-        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
-        if (isSysUser){
-            Up up = upService.queryByUserName(userName);
+        if (Root.isSysUser(request)){
+            Integer upId = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_ID.getDataName(), Integer.class);
+            Up up = upService.queryById(upId);
             Integer upid = up.getUp_id();
             System.out.println("初始化分页数据="+upid+";"+nextPage+";"+pageNumber);
             List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
             //去除文字样式
             for (Log md:logs){
-                md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),35,"..."));
+                md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),30,"..."));
             }
             ObjectMapper om = new ObjectMapper();
             String json = om.writeValueAsString(logs);

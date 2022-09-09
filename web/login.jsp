@@ -26,7 +26,6 @@
         }
         body{
             background: url("${pageContext.request.contextPath}/img/k7.jpg") center/100% 100% no-repeat;
-
         }
 
     </style>

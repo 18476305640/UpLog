@@ -58,34 +58,17 @@
             border: 1px solid black;
         }
 
-        tr {
-            border-bottom: 0.5px solid #dddddd;
-        }
+        /*.my_tbody > tr > td:nth-child(5) {*/
+        /*    */
+        /*}*/
 
-        .my_tbody > tr > td:nth-child(4) {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
 
-        .my_tbody > tr > td:nth-child(3) {
-            display: block;
-            width: 250px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .my_tbody > tr > td:nth-child(2) {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-
-        }
 
         .oneLog_controll {
-            width: 160px !important;
-            margin-right: 20px;
+            width: 150px !important;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: start;
         }
 
         .oneLog_controll > button {
