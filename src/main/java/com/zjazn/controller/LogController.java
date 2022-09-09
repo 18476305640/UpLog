@@ -13,7 +13,7 @@ import com.zjazn.pojo.Up;
 import com.zjazn.service.CommentService;
 import com.zjazn.service.LogService;
 import com.zjazn.service.UpService;
-import com.zjazn.utils.ShowChineseUtil;
+import com.zjazn.utils.ClearRichTextStyleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -66,7 +66,7 @@ public class LogController {
         List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
         //去除文字样式, 让网络传输更快
         for (Log md:logs){
-            md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),25,"..."));
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),25,"..."));
         }
         model.addAttribute("initLog",logs);
         // 查询要审核的条数
@@ -204,7 +204,7 @@ public class LogController {
             List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
             //去除文字样式
             for (Log md:logs){
-                md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),25,"..."));
+                md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),25,"..."));
             }
             ObjectMapper om = new ObjectMapper();
             String json = om.writeValueAsString(logs);
@@ -236,7 +236,7 @@ public class LogController {
         List<MinDateLog> logs = logService.queryByMinDate((thisPage-1)*onePageNumber, onePageNumber);
         //去除文字样式
         for (MinDateLog md:logs){
-            md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),45,"..."));
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),45,"..."));
 
         }
         System.out.println((thisPage-1)*onePageNumber+";"+onePageNumber);
@@ -260,7 +260,7 @@ public class LogController {
         List<Log> upLogs = logService.queryByUpId(upid);
         //去除文字样式
         for (Log md:upLogs){
-            md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),100,"..."));
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),100,"..."));
         }
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(upLogs);
@@ -274,7 +274,7 @@ public class LogController {
         System.out.println(logs.toString());
         //去除文字样式
         for (Log md:logs){
-            md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),40,"..."));
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),40,"..."));
         }
         System.out.println(logs);
 
@@ -325,7 +325,7 @@ class IndexController {
         List<MinDateLog> newLogs = logService.queryByMinDate(0, 15);
         //去除文字样式
         for (MinDateLog md:newLogs){
-            md.setLog_content(ShowChineseUtil.getShowCharacter(md.getLog_content(),45,"..."));
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),45,"..."));
 
         }
 
