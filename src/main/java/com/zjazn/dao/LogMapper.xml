@@ -35,7 +35,7 @@
         select count(*) from log where up_id=#{up_id} and log_state>0;
     </select>
     <select id="queryByMinDate" resultType="MinDateLog">
-        SELECT * FROM log left join up on log.up_id = up.up_id where log_state>0 ORDER BY log_date desc ,log_update_date desc limit #{started},#{length};
+        SELECT log.log_id, log.log_title,SUBSTR(log.log_content,1,2000) AS log_content, up.up_headImg,up.up_id,up.up_pname  FROM log left join up on log.up_id = up.up_id where log_state>0 ORDER BY log_date desc ,log_update_date desc limit #{started},#{length};
     </select>
     <select id="queryByUpTop" resultType="MinDateLog">
         SELECT * FROM LOG LEFT JOIN up ON log.up_id = up.up_id WHERE (DATEDIFF(NOW(),log_date) &lt; 30)  AND log_state>0 ORDER BY log_top DESC ,log_bottom ASC LIMIT 0,#{topNumber};

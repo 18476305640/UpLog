@@ -66,7 +66,7 @@ public class LogController {
         List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
         //去除文字样式, 让网络传输更快
         for (Log md:logs){
-            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),35)+"...");
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),35,"..."));
         }
         model.addAttribute("initLog",logs);
         // 查询要审核的条数
@@ -122,25 +122,19 @@ public class LogController {
     //去添加文章页面
     @RequestMapping("/toAddLog")
     public String toAddLog(Model model,HttpServletRequest request){
-        System.out.println("到了后台");
-        String userName = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_NAME.getDataName(), String.class);
-        Boolean isSysUser = AuthUtils.getDataByHttpRequest(request, AuthEnum.IS_SYS_USER.getDataName(), Boolean.class);
-
-        if (isSysUser){
-            Up up = upService.queryByUserName(userName);
-            Integer upid = up.getUp_id();
-            model.addAttribute("upid",upid);
+        if (Root.isSysUser(request)){
+            Integer upId = AuthUtils.getDataByHttpRequest(request, AuthEnum.USER_ID.getDataName(), Integer.class);
+            model.addAttribute("upid",upId);
             return "AddLogPage";
         }else {
             System.out.println("没有添加权限");
             return "forward:/up/tologin";
         }
-
-
     }
     //添加文章程序
     @RequestMapping("/addLogToData")
-    public String addLogToData(String upid,String logTitle,String logContent,Model model){
+    public String addLogToData(String upid,String logTitle,String logContent,Model model,HttpServletRequest request){
+        if (! Root.isSysUser(request,Integer.parseInt(upid))) return "";
         System.out.println("到了添加文章处理程序");
         System.out.println(upid+";"+logTitle+";"+logContent);
         Log log = new Log();
@@ -159,7 +153,6 @@ public class LogController {
             return "redirect:/log/toUpLog_children";
         }else {
             System.out.println("添加失败");
-
         }
         return "";
     }
@@ -204,7 +197,7 @@ public class LogController {
             List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
             //去除文字样式
             for (Log md:logs){
-                md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),35)+"...");
+                md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),35,"..."));
             }
             ObjectMapper om = new ObjectMapper();
             String json = om.writeValueAsString(logs);
@@ -236,10 +229,9 @@ public class LogController {
         List<MinDateLog> logs = logService.queryByMinDate((thisPage-1)*onePageNumber, onePageNumber);
         //去除文字样式
         for (MinDateLog md:logs){
-            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),45));
-
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),100));
         }
-        System.out.println((thisPage-1)*onePageNumber+";"+onePageNumber);
+//        System.out.println((thisPage-1)*onePageNumber+";"+onePageNumber);
         ObjectMapper om = new ObjectMapper();
         String json = om.writeValueAsString(logs);
         return json;
@@ -325,7 +317,7 @@ class IndexController {
         List<MinDateLog> newLogs = logService.queryByMinDate(0, 15);
         //去除文字样式
         for (MinDateLog md:newLogs){
-            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),45));
+            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),150));
 
         }
 

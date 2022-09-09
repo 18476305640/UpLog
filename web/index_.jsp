@@ -856,6 +856,7 @@
                 </div>
                 <%--pointTops--%>
                 <div class="type_content my_minDate inContent_box">
+
                     <c:forEach items="${newLogs}" var="item">
                         <ul class='oneLog'>
                             <li class='logTitle'>

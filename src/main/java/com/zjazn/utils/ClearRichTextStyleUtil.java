@@ -22,6 +22,14 @@ public class ClearRichTextStyleUtil {
         }
         return showCharacter;
     }
+    public static String getShowCharacter(String log_content, int strLength,String aftStr) {
+        String showCharacter = ClearRichTextStyleUtil.getShowCharacter(log_content);
+        if (showCharacter.length() > strLength) {
+            return showCharacter.substring(0,strLength-1)+aftStr;
+        }
+        return showCharacter;
+    }
+
     public static void main(String[] args) {
         System.out.println(getShowCharacter("<p>hello</p><a href"));
     }
