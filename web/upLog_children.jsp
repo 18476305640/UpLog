@@ -32,16 +32,6 @@
             text-indent: 5px;
         }
 
-        .my_addPageMain {
-            width: 100%;
-            height: 760px !important;
-
-        }
-
-        .my_addPageMain {
-            width: 100%;
-            position: relative;
-        }
 
         .pageing {
             width: 100%;
@@ -50,10 +40,8 @@
 
             box-sizing: border-box;
             padding: 10px 10px;
-
             position: fixed;
             bottom: 0px;
-
         }
 
         tbody {
@@ -69,14 +57,17 @@
             height: 20px;
             border: 1px solid black;
         }
+
         tr {
             border-bottom: 0.5px solid #dddddd;
         }
+
         .my_tbody > tr > td:nth-child(4) {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .my_tbody > tr > td:nth-child(3) {
             display: block;
             width: 250px;
@@ -109,6 +100,8 @@
             float: right;
             color: #e93536;
         }
+
+
     </style>
     <script type="text/javascript">
         $(function () {
@@ -137,7 +130,8 @@
             //现在页数
             var thisPage = 1;
             //每页数是
-            var onePageNumber = 10;
+            var onePageNumber = 15;
+
             function PageingFun() {
                 console.log("检测到了，值是=" + pageNumber);
                 //获取到了页数，开始发ajax请求获取，初始化页面（thisPage=1）数据
@@ -154,7 +148,7 @@
                             //获取到指定页数数据后，同步到页面
                             console.log("正在把数据放在页面~");
 
-                            var oneLog = $("<tr><td style='display: none' class='logInfo'>" + value.log_id + "</td><td>" + ((thisPage - 1) * 10 + index + 1) + "</td><td class='oneLog_title'>" + value.log_title + "</td><td class='oneLog_content'>" + value.log_content + "</td><td class='oneLog_controll'><button type='button' class='btn btn-success'>修改</button><button type='button' class='btn btn-warning'>删除</button></td></tr>");
+                            var oneLog = $("<tr><td style='display: none' class='logInfo'>" + value.log_id + "</td><td>" + ((thisPage - 1) * onePageNumber + index + 1) + "</td><td class='oneLog_title'>" + value.log_title + "</td><td class='oneLog_content'>" + value.log_content + "</td><td class='oneLog_controll'><button type='button' class='btn btn-success'>修改</button><button type='button' class='btn btn-warning'>删除</button></td></tr>");
                             $(".my_tbody").append(oneLog);
 
                             $(".toPage_input").val(thisPage);
@@ -182,7 +176,9 @@
                     pageNumber = data.pageNumber;
                     // console.log("总数据数=" + data.pageNumber);
                     $(".pageing>span").text(pageNumber);
-                    $(".toPage_input").val(pageNumber>0?1:0);
+                    $(".toPage_input").val(pageNumber > 0 ? 1 : 0);
+                    // 获取初始数据
+                    PageingFun();
 
                 },
                 error: function (xhr, status, error) {
@@ -223,7 +219,6 @@
             $(".pageing>.toInputPage").click(function () {
                 //去指定页面
                 var topage = $(".toPage_input").val();
-
                 if (topage > 0 && topage <= pageNumber) {
                     thisPage = topage;
                     PageingFun();
@@ -249,44 +244,43 @@
             <span id="msg">当前有【${logCheckComplianceCount}】条帖子正在审核，请悄等~</span>
         </c:if>
     </div>
-    <div class="my_addPageMain">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <td>#</td>
-                <td>标题</td>
-                <td>内容</td>
-                <td>
-                    <button type="button" class="btn my_addBut">添加</button>&nbsp;操作
-                </td>
-            </tr>
-            </thead>
-            <tbody class="my_tbody">
-            <c:forEach items="${initLog}" var="log" varStatus="idxStatus">
-                <tr>
-                    <td style='display: none' class='logInfo'>${log.log_id}</td>
-                    <td>${idxStatus.index+1}</td>
-                    <td class="oneLog_title">${log.log_title}</td>
-                    <td class='oneLog_content'>${log.log_content}</td>
-                    <td class='oneLog_controll'>
-                        <button type='button' class='btn btn-success'>修改</button>
-                        <button type='button' class='btn btn-warning'>删除</button>
-                    </td>
-                </tr>
-            </c:forEach>
+    <table class="table table-hover" id="logs_table">
+        <thead>
+        <tr>
+            <td>#</td>
+            <td>标题</td>
+            <td>内容</td>
+            <td>
+                <button type="button" class="btn my_addBut">添加</button>&nbsp;操作
+            </td>
+        </tr>
+        </thead>
+        <tbody class="my_tbody">
+        <%--            <c:forEach items="${initLog}" var="log" varStatus="idxStatus">--%>
+        <%--                <tr>--%>
+        <%--                    <td style='display: none' class='logInfo'>${log.log_id}</td>--%>
+        <%--                    <td>${idxStatus.index+1}</td>--%>
+        <%--                    <td class="oneLog_title">${log.log_title}</td>--%>
+        <%--                    <td class='oneLog_content'>${log.log_content}</td>--%>
+        <%--                    <td class='oneLog_controll'>--%>
+        <%--                        <button type='button' class='btn btn-success'>修改</button>--%>
+        <%--                        <button type='button' class='btn btn-warning'>删除</button>--%>
+        <%--                    </td>--%>
+        <%--                </tr>--%>
+        <%--            </c:forEach>--%>
 
-            </tbody>
-        </table>
-        <div class="pageing">
-            <button type="button" class="btn toTop">首页</button>
-            <button type="button" class="btn UpperPage">上一页</button>
-            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" value="00"
-                   class="toPage_input">&nbsp;/&nbsp;<span>00</span>
-            <button type="button" class="btn toInputPage">跳转</button>
-            <button type="button" class="btn nextPage">下一页</button>
-            <button type="button" class="btn toBottom">尾页</button>
+        </tbody>
+    </table>
+    <div style="width: 100%;height: 65px;visibility:hidden">[因为css不起理想作用,用于些法,让此元素垫高]</div>
+    <div class="pageing">
+        <button type="button" class="btn toTop">首页</button>
+        <button type="button" class="btn UpperPage">上一页</button>
+        <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" value="00"
+               class="toPage_input">&nbsp;/&nbsp;<span>00</span>
+        <button type="button" class="btn toInputPage">跳转</button>
+        <button type="button" class="btn nextPage">下一页</button>
+        <button type="button" class="btn toBottom">尾页</button>
 
-        </div>
     </div>
 </main>
 </body>

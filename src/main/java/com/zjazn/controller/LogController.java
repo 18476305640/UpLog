@@ -60,15 +60,15 @@ public class LogController {
     public String toUpLog_children(Integer upid, Model model,HttpServletRequest request) throws IOException {
 
         if (! Root.isSysUser(request,upid)) return "upLog_children";
-        // 封装一初始化数据
-        int nextPage = 1;
-        int pageNumber = 10;
-        List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
-        //去除文字样式, 让网络传输更快
-        for (Log md:logs){
-            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),35,"..."));
-        }
-        model.addAttribute("initLog",logs);
+//        // 封装一初始化数据
+//        int nextPage = 1;
+//        int pageNumber = 15;
+//        List<Log> logs = logService.queryByUpidLimit(upid, (nextPage-1)*pageNumber , pageNumber);
+//        //去除文字样式, 让网络传输更快
+//        for (Log md:logs){
+//            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),35,"..."));
+//        }
+//        model.addAttribute("initLog",logs);
         // 查询要审核的条数
         Integer logCheckComplianceCount = logMapper.selectCheckComplianceCountByUpId(upid);
         model.addAttribute("logCheckComplianceCount",logCheckComplianceCount);
