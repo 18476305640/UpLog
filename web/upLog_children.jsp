@@ -51,6 +51,9 @@
             box-sizing: border-box;
             padding: 10px 10px;
 
+            position: absolute;
+            bottom: 0px;
+
         }
 
         tbody {
@@ -66,12 +69,20 @@
             height: 20px;
             border: 1px solid black;
         }
-
-        .my_tbody > tr > td:nth-child(3) {
+        tr {
+            border-bottom: 0.5px solid #dddddd;
+        }
+        .my_tbody > tr > td:nth-child(4) {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-
+        }
+        .my_tbody > tr > td:nth-child(3) {
+            display: block;
+            width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .my_tbody > tr > td:nth-child(2) {

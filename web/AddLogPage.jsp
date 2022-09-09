@@ -21,14 +21,16 @@
         *,h3,p{
             margin: 0;
             padding: 0;
+
+
         }
 
-        body{
-            /*background: url("https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2926199504,3558053336&fm=26&gp=0.jpg") center/100%;*/
+        body {
+            overflow-x:hidden;
         }
         #text_box{
             width: 100%;
-            height: 60%;
+            height: 70%;
         }
         .main{
             width: 100%;
@@ -38,11 +40,11 @@
         }
         .mybut{
             position: fixed;
-            bottom: 0px;
-            left: 0px;
+            bottom: 20px;
+            right: 20px;
             z-index: 1000;
         }
-    </style>
+</style>
     <script type="text/javascript">
         $(function(){
             var ue = UE.getEditor('text_box');
