@@ -51,7 +51,7 @@
             box-sizing: border-box;
             padding: 10px 10px;
 
-            position: absolute;
+            position: fixed;
             bottom: 0px;
 
         }
