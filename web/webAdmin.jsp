@@ -352,19 +352,19 @@
                             if(thisType=="getAll"){
                                 maxPageNumber_all=getAllLogNumber("",pageLength);
                                 $.each(data,function(index,value){
-                                    var oneLog=$("<tr><td style='display: none' class='logInfo'>"+value.log_id+"</td><td>"+((thisPage_all-1)*pageNumber_all+index+1)+"</td><td><a target='_blank' href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></td><td class='oneLog_content'>"+value.log_title+"</td><td class='oneLog_controll'><button type='button' class='btn btn-success' data-mydata='open'>查看</button><button type='button' class='btn btn-warning ' data-mydata='closeLog'>关进小黑屋</button></td></tr>");
+                                    var oneLog=$("<tr><td style='display: none' class='logInfo'>"+value.log_id+"</td><td>"+((thisPage_all-1)*pageNumber_all+index+1)+"</td><td><a target='_blank' href='/log/queryByLogId/"+value.log_id+"'>"+value.log_title+"</a></td><td class='oneLog_content'>"+value.log_title+"</td><td class='oneLog_controll'><button type='button' class='btn btn-success' data-mydata='open'>查看</button><button type='button' class='btn btn-warning ' data-mydata='closeLog'>关进小黑屋</button></td></tr>");
                                     $(".logsBox_content").append(oneLog);
                                 });
                             }else if(thisType=="needAgainAdopt"){
                                 maxPageNumber_all=getTypeLogPageNumber(0.5,"",pageLength);
                                 $.each(data,function(index,value){
-                                    var oneLog=$("<tr><td style='display: none' class='logInfo'>"+value.log_id+"</td><td>"+((thisPage_all-1)*pageNumber_all+index+1)+"</td><td><a target='_blank' href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></td><td class='oneLog_content report_content'>"+value.log_title+"<button type='button' class='btn btn-success start_verify'>审核模式</button></td></td><td class='oneLog_controll'><button type='button' class='btn btn-success report_no' data-mydata='report_no'>举报失败</button><button type='button' class='btn btn-warning report_ok' data-mydata='report_ok'>举报成功</button></td></tr>");
+                                    var oneLog=$("<tr><td style='display: none' class='logInfo'>"+value.log_id+"</td><td>"+((thisPage_all-1)*pageNumber_all+index+1)+"</td><td><a target='_blank' href='/log/queryByLogId/"+value.log_id+"'>"+value.log_title+"</a></td><td class='oneLog_content report_content'>"+value.log_title+"<button type='button' class='btn btn-success start_verify'>审核模式</button></td></td><td class='oneLog_controll'><button type='button' class='btn btn-success report_no' data-mydata='report_no'>举报失败</button><button type='button' class='btn btn-warning report_ok' data-mydata='report_ok'>举报成功</button></td></tr>");
                                     $(".logsBox_content").append(oneLog);
                                 });
                             }else if(thisType=="needAdopt"){
                                 maxPageNumber_all=getTypeLogPageNumber(0,"",pageLength);
                                 $.each(data,function(index,value){
-                                    var oneLog=$("<tr><td style='display: none' class='logInfo'>"+value.log_id+"</td><td>"+((thisPage_all-1)*pageNumber_all+index+1)+"</td><td><a target='_blank' href='/log/queryByLogId?logid="+value.log_id+"'>"+value.log_title+"</a></td><td class='oneLog_content'>"+value.log_title+"</td><td class='oneLog_controll'><button type='button' class='btn btn-success' data-mydata='adopt_ok'>审核通过</button><button type='button' class='btn btn-warning closeLog_all' data-mydata='adopt_no'>不通过</button></td></tr>");
+                                    var oneLog=$("<tr><td style='display: none' class='logInfo'>"+value.log_id+"</td><td>"+((thisPage_all-1)*pageNumber_all+index+1)+"</td><td><a target='_blank' href='/log/queryByLogId/"+value.log_id+"'>"+value.log_title+"</a></td><td class='oneLog_content'>"+value.log_title+"</td><td class='oneLog_controll'><button type='button' class='btn btn-success' data-mydata='adopt_ok'>审核通过</button><button type='button' class='btn btn-warning closeLog_all' data-mydata='adopt_no'>不通过</button></td></tr>");
                                     $(".logsBox_content").append(oneLog);
                                 });
                             }
@@ -497,7 +497,7 @@
                     var logid=$(this).parent("td").parent("tr").children().eq(0).text();
                     switch(but_type){
                         case "open":
-                            window.open("${pageContext.request.contextPath}/log/queryByLogId?logid="+logid);
+                            window.open("${pageContext.request.contextPath}/log/queryByLogId/"+logid);
                             break;
                         case "closeLog":
                             if(confirm("确定将【"+$(this).parent("td").parent("tr").children().eq(2).text()+"】log关进小黑屋吗？")){

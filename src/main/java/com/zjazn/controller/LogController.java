@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,8 +46,12 @@ public class LogController {
     @Qualifier("UpServiceImpl")
     private UpService upService;
 
+    @RequestMapping("/queryByLogId/{logId}")
+    public String inLog_RESTful(@PathVariable("logId") int logid, Model model, HttpServletRequest request){
+        return inLog(logid, model, request);
+    }
     @RequestMapping("/queryByLogId")
-    public String inLog(int logid, Model model,HttpServletRequest request){
+    public String inLog(int logid, Model model, HttpServletRequest request){
 //        Map<String,Object> userData = (Map<String,Object>)request.getAttribute("userData");
         Log log = logService.queryByLogId(logid);
         List<CommentAndUp> logComments = commentService.queryByLogId(logid);

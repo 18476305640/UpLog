@@ -860,7 +860,7 @@
                     <c:forEach items="${newLogs}" var="item">
                         <ul class='oneLog'>
                             <li class='logTitle'>
-                                <a href='${pageContext.request.contextPath}/log/queryByLogId?logid=${item.log_id}'>${item.log_title}</a>
+                                <a href='${pageContext.request.contextPath}/log/queryByLogId/${item.log_id}'>${item.log_title}</a>
                             </li>
                             <li class='logContent'>
                                 <div><img src='${pageContext.request.contextPath}${item.up_headImg}'/></div>
@@ -888,7 +888,7 @@
                     <c:forEach items="${pointTops}" var="item">
                         <div>
                             <div><img src='${pageContext.request.contextPath}${item.up_headImg}'></div>
-                            <a href='${pageContext.request.contextPath}/log/queryByLogId?logid=${item.log_id}'>${item.log_title}</a>
+                            <a href='${pageContext.request.contextPath}/log/queryByLogId/${item.log_id}'>${item.log_title}</a>
                         </div>
 
                     </c:forEach>
