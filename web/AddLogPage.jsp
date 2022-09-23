@@ -60,6 +60,12 @@
                 $(".mylogcontent").val(content);
 
             }
+
+            // 关闭窗口时提示
+            window.onbeforeunload = function(e){
+                e =  e || window.event;
+                e.returnValue=("你写的内容还没有保存！");
+            }
         });
 
     </script>

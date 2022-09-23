@@ -920,7 +920,7 @@
 
 </main>
 <footer id="footer">
-    <p>粤ICP备XXXXX号</p>
+    <p>粤ICP备2022109105号</p>
 </footer>
 </body>
 </html>
