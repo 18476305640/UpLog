@@ -14,6 +14,7 @@ import com.zjazn.service.CommentService;
 import com.zjazn.service.LogService;
 import com.zjazn.service.UpService;
 import com.zjazn.utils.ClearRichTextStyleUtil;
+import com.zjazn.utils.gt.TimeConsumingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -252,11 +253,11 @@ public class LogController {
     @RequestMapping("/getUpLog")
     @ResponseBody
     public String getUpLog(Integer upid) throws JsonProcessingException {
-
         List<Log> upLogs = logService.queryByUpId(upid);
         //去除文字样式
         for (Log md:upLogs){
-            md.setLog_content(ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(),100));
+            String showCharacter = ClearRichTextStyleUtil.getShowCharacter(md.getLog_content(), 100);
+            md.setLog_content(showCharacter);
         }
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(upLogs);

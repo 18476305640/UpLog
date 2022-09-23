@@ -23,7 +23,8 @@
         select * from  log where log_id=#{log_id}
     </select>
     <select id="queryByUpId" resultType="Log">
-        select * from log where up_id=#{up_id};
+        select log_id,up_id,log_title,SUBSTR(log_content,1,800) as log_content,log_date,log_top,log_bottom,log_update_date,log_state,log_read
+        from log where up_id=#{up_id};
     </select>
     <select id="getTablePageNumber" resultType="Integer">
         select count(*) from log;
@@ -55,14 +56,16 @@
     </update>
 
     <select id="queryLogByState" resultType="Log">
-        select * from log where log_state=#{state}
+        select  log_id,up_id,log_title,SUBSTR(log_content,1,800) as log_content,log_date,log_top,log_bottom,log_update_date,log_state,log_read
+        from log where log_state=#{state}
         <if test="likeValue != null">
             AND log_title like CONCAT('%',#{likeValue},'%')
         </if>
         order by log_date desc limit #{start},#{pageLength};
     </select>
     <select id="queryAll" resultType="Log">
-        select * from log where log_state>0
+        select  log_id,up_id,log_title,SUBSTR(log_content,1,800) as log_content,log_date,log_top,log_bottom,log_update_date,log_state,log_read
+        from log where log_state>0
         <if test="likeValue != null">
             AND log_title like CONCAT('%',#{likeValue},'%')
         </if>

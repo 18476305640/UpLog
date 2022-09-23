@@ -1,24 +1,15 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="UpLog2:war exploded">
-    <output-path>$PROJECT_DIR$/target/uplog</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>UpLog2</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
+  <artifact type="exploded-war" name="UpLog:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/UpLog_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="UpLog2" />
+          <element id="module-output" name="UpLog" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.6" />
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
-          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.2" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.2" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.2" />
@@ -44,10 +35,7 @@
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.6" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/uplog/META-INF/MANIFEST.MF" />
-      </element>
-      <element id="javaee-facet-resources" facet="UpLog2/web/Web" />
+      <element id="javaee-facet-resources" facet="UpLog/web/Web" />
     </root>
   </artifact>
 </component>
