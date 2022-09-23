@@ -25,14 +25,16 @@
 
         }
 
-        body {
+        body{
             overflow-x:hidden;
-            overflow-y:hidden;
+            /*overflow-y:hidden;*/
+            overflow: -moz-scrollbars-none;
         }
-
+        /*隐藏滚动条*/
+        body::-webkit-scrollbar { width: 0 !important }
         #text_box{
             width: 100%;
-            height: 70%;
+            height: 90%;
         }
         .main{
             width: 100%;

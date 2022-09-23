@@ -25,13 +25,17 @@
 
         body{
             overflow-x:hidden;
-            overflow-y:hidden;
+            /*overflow-y:hidden;*/
+            overflow: -moz-scrollbars-none;
         }
+        /*隐藏滚动条*/
+        body::-webkit-scrollbar { width: 0 !important }
+
+
 
         #text_box{
             width: 100%;
-            height: 70%;
-            /*margin-bottom: 90px;*/
+            height: 90%;
         }
 
         .main{
@@ -61,7 +65,6 @@
             but.onclick=function(){
                 // 取消关闭退示
                 window.onbeforeunload = window.onbeforeunload = function (e) {};
-
                 var content=ue.getContent();//getContentTxt();获取结构文本
                 $(".mylogcontent").val(content);
 
