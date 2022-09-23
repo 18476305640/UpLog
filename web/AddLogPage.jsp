@@ -27,7 +27,9 @@
 
         body {
             overflow-x:hidden;
+            overflow-y:hidden;
         }
+
         #text_box{
             width: 100%;
             height: 70%;
@@ -44,9 +46,15 @@
             right: 20px;
             z-index: 1000;
         }
+
 </style>
     <script type="text/javascript">
         $(function(){
+            // 关闭窗口时提示
+            window.onbeforeunload = function(e){
+                e =  e || window.event;
+                e.returnValue=("你写的内容还没有保存！");
+            }
             var ue = UE.getEditor('text_box');
             var logContent=$(".mylogcontent").val();
             ue.addListener("ready", function () {
@@ -56,16 +64,14 @@
 
             var but=$(".toUpdateLogBut")[0];
             but.onclick=function(){
+                // 取消关闭退示
+                window.onbeforeunload = window.onbeforeunload = function (e) {};
                 var content=ue.getContent();//getContentTxt();获取结构文本
                 $(".mylogcontent").val(content);
 
             }
 
-            // 关闭窗口时提示
-            window.onbeforeunload = function(e){
-                e =  e || window.event;
-                e.returnValue=("你写的内容还没有保存！");
-            }
+
         });
 
     </script>
@@ -79,7 +85,7 @@
         <input type="text" class="form-control" id="inputEmail3" name="logTitle" placeholder="Nickname">
         <p>内容</p>
         <input type="hidden" class="form-control mylogcontent" id="inputPassword3 " placeholder="Personal signature" name="logContent">
-        <div id="text_box" ></div>
+        <div id="text_box"  ></div>
         <button type="submit" class="btn btn-default mybut toUpdateLogBut ">添加文章</button>
     </form>
 
