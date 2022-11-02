@@ -23,10 +23,14 @@
         }
 
         .my_context{
-            width: 86%;
             margin: 10px auto;
             background-color: #ffffff;
             padding:5px ;
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 10px;
+            bottom: 10px;
         }
         .my_context>article{
             width: 100%;
@@ -41,9 +45,8 @@
             border-left: 3px solid red;
 
             line-height: 40px;
-            text-indent: 5px;
+            text-indent: 15px;
             background-color: #f8f8f8;
-            padding-left: 10px;
 
         }
 
@@ -70,7 +73,7 @@
             font-size: 20px !important;
             box-sizing: border-box;
             border-left: 3px solid red;
-            text-indent: 5px;
+            text-indent: 15px;
         }
         .ping>.comment_box{
             width: 100%;

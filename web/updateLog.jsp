@@ -31,8 +31,6 @@
         /*隐藏滚动条*/
         body::-webkit-scrollbar { width: 0 !important }
 
-
-
         #text_box{
             width: 100%;
             height: 90%;
