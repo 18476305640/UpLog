@@ -30,7 +30,6 @@
             left: 5%;
             right: 5%;
             top: 10px;
-            bottom: 10px;
         }
         .my_context>article{
             width: 100%;
@@ -77,9 +76,7 @@
         }
         .ping>.comment_box{
             width: 100%;
-            min-height: 400px;
-
-
+            min-height: 700px;
         }
         .ping>.comment_box>div{
             width: 100%;
