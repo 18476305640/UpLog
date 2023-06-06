@@ -11,5 +11,6 @@
         <module name="UpLog2" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
   </component>
 </project>
